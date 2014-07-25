@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @orders = @user.orders.paginate(page: params[:page], per_page: 10)
   end
   
   def index

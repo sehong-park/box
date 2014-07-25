@@ -4,7 +4,7 @@
       <%= link_to "I am Box", root_path, id: "logo" %>
       <nav>
         <ul class="nav nav-tabs pull-right">
-          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Need boxes?", ordering_path %></li>
           <% if signed_in? %>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
@@ -21,7 +21,7 @@
               </ul>
             </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li><%= link_to "로그인", signin_path %></li>
           <% end %>
         </ul>
       </nav>

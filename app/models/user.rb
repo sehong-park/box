@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Model Relation
+  has_many :orders, dependent: :destroy
+  
+  # Before Action
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   

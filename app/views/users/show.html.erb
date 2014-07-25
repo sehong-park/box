@@ -1,6 +1,6 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span4">
+  <aside class="col-sm-4">
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -9,4 +9,13 @@
       <p><%= @user.email %></p>
     </section>
   </aside>
+  <div class="col-sm-8">
+    <% if @user.orders.any? %>
+    <h3>Orders (<%= @user.orders.count %>)</h3>
+      <ol class="orders">
+        <%= render @orders %>
+      </ol>
+      <%= will_paginate @orders %>
+    <% end %>
+  </div>
 </div>
