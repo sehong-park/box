@@ -1,10 +1,6 @@
 <% provide(:title, "서비스신청") %>
 <div class="row">
   <%= form_for(@order) do |f| %>
-
-    <%= render 'orders/unit', unit: @unit[:carrier] %>
-    <%= render 'orders/unit', unit: @unit[:regular] %>
-    <%= render 'orders/unit', unit: @unit[:hard] %>
-
+    <%= render 'collapse/panel_group', f: f %>
   <% end %>
 </div>
