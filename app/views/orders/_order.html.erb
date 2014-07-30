@@ -1,0 +1,8 @@
+<li>
+  <span class="why-ordering">
+    <%= link_to order.why_ordering, order %>
+  </span>
+  <span class="timestamp">
+    Ordered <%= time_ago_in_words(order.created_at) %> ago.
+  </span>
+</li>

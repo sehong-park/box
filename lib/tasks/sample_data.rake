@@ -20,14 +20,20 @@ namespace :db do
     end
     
     # 50 orders..
-    users = User.all(limit: 6)
-    50.times do
-      users.each { |user| user.microposts.create!(
-                                              num_boxes: Random.rand(7),
-                                              weeks_storage: Random.rand(10),
-                                              charge: num_boxes * weeks_storage,
-                                              location_pickup: Faker::Lorem.sentence(2),
-                                              description: Faker::Lorem.sentence(1)) }
+    user = User.first
+    10.times do
+      
+      unit_count = Random.rand(7)
+      store_weeks = Random.rand(10)
+      pickup_address = Faker::Lorem.sentence(2)
+      why_ordering = Faker::Lorem.sentence(1)
+      
+      user.orders.create!(
+          unit_count: unit_count,
+          store_weeks: store_weeks,
+          charge: unit_count * store_weeks,
+          pickup_address: pickup_address,
+          why_ordering: why_ordering )
     end
   end
 end

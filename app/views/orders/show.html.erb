@@ -1,0 +1,25 @@
+<% provide(:title, @order.why_ordering) %>
+<div class="row">
+  <aside class="col-sm-4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <h3><%= @order.why_ordering %></h3>
+      <p>unit_count : <%= @order.unit_count %></p>
+      <p>store_weeks : <%= @order.store_weeks %></p>
+      <p>Charge : <%= @order.charge %></p>
+    </section>
+  </aside>
+  <div class="col-sm-8">
+    
+    <h3></h3>
+      <ol class="units">
+        1. <br/>
+        2. <br/>
+        3. <br/>
+      </ol>
+    
+  </div>
+</div>

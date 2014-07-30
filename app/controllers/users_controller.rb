@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user, only: [:destroy]
   
   def new
+    if signed_in?
+      flash[:warning] = "Already signed up!"
+      redirect_to(root_path)
+    end
+    
     @user = User.new
   end
   
@@ -21,7 +26,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @orders = @user.orders.paginate(page: params[:page], per_page: 10)
+    @orders = @user.orders.paginate(page: params[:page], per_page: 5)
   end
   
   def index
@@ -56,15 +61,7 @@ class UsersController < ApplicationController
     end
   
     # Before filters
-    def signed_in_user
-      unless signed_in?
-        store_location
-        flash[:warning] = "Please sign in."
-        redirect_to signin_url
-      end
-    end
-  
-    def correct_user
+   def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
     end
