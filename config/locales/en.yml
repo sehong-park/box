@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
-  helpers:
+helpers:
+  label:
     order:
-      how_many: "How many would like?"
+      pickup_address: "Write your entire text here"

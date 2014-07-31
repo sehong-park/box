@@ -6,11 +6,21 @@
       </a>
     </h4>
   </div>
-  <div id="collapse<%= panel[:number] %>" class="panel-collapse collapse in">
+  <div id="collapse<%= panel[:number] %>" class="panel-collapse collapse <%= 'in' if panel[:number] == 1 %>">
     <div class="panel-body">
-      <% panel[:body][:object].each do |key, value| %>
-        <%= render panel[:body][:path], object: value %>
+      <%= render panel[:body][:path] %>
+      <% if panel[:number] != 1 %>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= panel[:number]-1 %>" class="btn btn-success btn-lg pull-left" role="button">
+          <span class="glyphicon glyphicon-chevron-left"></span>이전
+        </a>
       <% end %>
-    </div>
+      <% if panel[:number] != 3 %>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= panel[:number]+1 %>" class="btn btn-success btn-lg pull-right" role="button">
+          다음<span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      <% else %>
+        <%= button_tag "작성완료", class: "btn btn-lg btn-success pull-right" %>
+      <% end %>
+   </div>
   </div>
 </div>

@@ -17,11 +17,18 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  
 }
 
 section {
   overflow: auto;
+}
+
+a {
+  color: $brand-success;
+  &:hover {
+    color: $brand-success;
+  }
 }
 
 textarea {
@@ -54,7 +61,6 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
 }
 
 p {
@@ -64,16 +70,36 @@ p {
 
 
 /* header */
+header {
+  color: white;
+  font-weight: bold;
+  padding: 20px 10px 20px 10px;
+  background-color: $brand-success;
+  
+  .nav {
+    a {
+      color: white;
+      &:hover {
+        color: $brand-success;
+      }
+    }
+    .fat-menu {
+      a {
+        color: $gray-darker;
+      }
+    }
+  }
+}
 
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #428bca;
+  color: white;
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
-  font-weight: bold;
   line-height: 1;
   &:hover {
     text-decoration: none;
@@ -188,3 +214,5 @@ aside {
     height: 200px;
   }
 }
+
+/* collapse */

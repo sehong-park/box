@@ -13,19 +13,10 @@ module OrdersHelper
     }
   end
   
-  def collapse_panel_body(path, object)
+  def collapse_panel_body(path, object = nil)
     @body = {
       path: path,
       object: object
     }
   end
-  
-  def units
-    @units = {
-      carrier: { name: "캐리어", src: "http://goo.gl/fYejCs" },
-      regular: { name: "종이박스", src: "http://goo.gl/wH8z0E" },
-      hard: { name: "하드박스", src: "http://goo.gl/NOC18R" }
-    }
-  end
-  
 end

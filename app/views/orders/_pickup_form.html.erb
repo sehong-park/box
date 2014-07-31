@@ -1,0 +1,8 @@
+<div class="form-group">
+  <label for="order_pickup_address">픽업 주소</label>
+  <%= text_field(:order, :pickup_address, class: "form-controll", placeholder: "예) 서울시 강남구 역삼동 683-34 4층")%>
+</div>
+<div class="form-group">
+  <label for="order_pickup_datetime">픽업 일자 및 시간</label>
+  <%= datetime_field(:order, :pickup_datetime, class: "form-controll", placeholder: Time.now.strftime("%Y-%m-%d %H:%m:%S")) %>
+</div>

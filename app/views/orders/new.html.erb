@@ -1,6 +1,9 @@
 <% provide(:title, "서비스신청") %>
 <div class="row">
-  <%= form_for(@order) do |f| %>
-    <%= render 'collapse/panel_group', f: f %>
-  <% end %>
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for :order do |order_form| %>
+      <%= render 'shared/error_messages', object: @order %>
+      <%= render 'collapse/panel_group' %>
+    <% end %>
+  </div>
 </div>

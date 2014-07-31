@@ -1,9 +1,9 @@
-<header class="navbar navbar-fixed-top">
+<header class="navbar">
   <div class="navbar-inner">
     <div class="container-fluid">
       <%= link_to "I am Box", root_path, id: "logo" %>
       <nav>
-        <ul class="nav nav-tabs pull-right">
+        <ul class="nav nav-pills pull-right">
           <li><%= link_to "서비스신청", ordering_path %></li>
           <% if signed_in? %>
             <li><%= link_to "사용자", users_path %></li>
