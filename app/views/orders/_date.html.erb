@@ -1,0 +1,35 @@
+<div class="form-group">
+  <label for="order_pickup_datetime">보관일</label>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= select_year(Date.today, {prefix: "order[pickup_datetime]", start_year: Time.now.year, end_year: Time.now.year+1, prompt: "년"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_month(Date.today, {prefix: "order[pickup_datetime]", use_month_numbers: true, prompt: "월"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_day(Date.today, {prefix: "order[pickup_datetime]", prompt: "일"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_hour(Time.now.hour, {prefix: "order[pickup_datetime]", start_hour: 10, end_hour: 17, prompt: "시"}, {class: "form-control input-lg"}) %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="order_delivery_datetime">회송일</label>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= select_year(Date.today, {prefix: "order[delivery_datetime]", start_year: Time.now.year, end_year: Time.now.year+1, prompt: "년"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_month(Date.today, {prefix: "order[delivery_datetime]", use_month_numbers: true, prompt: "월"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_day(Date.today, {prefix: "order[delivery_datetime]", prompt: "일"}, {class: "form-control input-lg"}) %>
+    </div>
+    <div class="col-sm-3">
+      <%= select_hour(Time.now.hour, {prefix: "order[delivery_datetime]", start_hour: 10, end_hour: 17, prompt: "시"}, {class: "form-control input-lg"}) %>
+    </div>
+  </div>
+</div>
