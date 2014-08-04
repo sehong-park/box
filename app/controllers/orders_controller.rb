@@ -19,8 +19,11 @@ class OrdersController < ApplicationController
     @address_body = collapse_panel_body("orders/address")
     @address_panel = collapse_panel(3, "픽업장소와 회송장소를 알려주세요!", @address_body)
     
-    @user_body = collapse_panel_body("orders/user")
-    @user_panel = collapse_panel(4, "사용자 정보를 알려주세요!", @user_body)
+#    @user_body = collapse_panel_body("orders/user")
+#    @user_panel = collapse_panel(4, "사용자 정보를 알려주세요!", @user_body)
+    
+    @why_body = collapse_panel_body("orders/why_ordering")
+    @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
   end
   
   def create
