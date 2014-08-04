@@ -9,5 +9,5 @@ class Order < ActiveRecord::Base
 #  validates :charge, presence: true
   validates :pickup_address, presence: true, length: { maximum: 100 }
   validates :delivery_address, presence: true, length: { maximum: 100 }
-#  validates :why_ordering, presence: true, length: { maximum: 500 }
+  validates :why_ordering, presence: true, length: { maximum: 20 }
 end
