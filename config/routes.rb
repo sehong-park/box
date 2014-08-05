@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'
-  match '/cunit', to: 'units#create', via: 'post'
+  
   #
 end

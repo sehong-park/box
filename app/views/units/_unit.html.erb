@@ -1,14 +1,17 @@
 <li>
   <div class="row">
     <div class="col-sm-4 thumbnail">
-      <%= image_tag(Unit::UNIT_IMAGE[@unit.type], alt: @unit.type, class: "unit") %>
+      <%= image_tag(Unit::UNIT_IMAGE[unit.unit_type.to_sym], alt: unit.unit_type, class: "unit") %>
     </div>
 
-    <div class="col-sm-8 thumbnail">
-      <div class="col-sm-8 caption">
-        <h3><%= @unit.name %></h3>
-        <p><%= @unit.content %></p>
+    <div class="col-sm-8">
+      <div class="caption">
+        <h3>이름없음</h3>
+        <p>Using reversible will ensure that the instructions are executed in the right order too. If the previous example migration is reverted, the down block will be run after the home_page_url column is removed and right before the table products is dropped.</p>
       </div>
     </div>
   </div>
+  
+  
+  
 </li>

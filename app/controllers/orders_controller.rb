@@ -34,10 +34,15 @@ class OrdersController < ApplicationController
     
     if @order.save
       flash[:success] = "New order created!"
-      @unit_params[:order_id] = @order.id
-      
-      redirect_to('/cunit',
-        flash: {order_id: @order.id, unit_count: @unit_params})
+
+      @unit_params[:unit_count].each do |type, count|
+        count.to_i.times do
+          @unit = @order.units.build(unit_type: type)
+          @unit.save
+        end
+      end
+
+      redirect_to @order
 
     else
       flash[:warning] = "Ordering failed.."
@@ -76,9 +81,13 @@ class OrdersController < ApplicationController
       @order_params = filtered_order(@raw_params)
     end
   
-  def unit_count
-    params.require(:order).permit(
-      {unit_count: [:carrier, :regular, :hard]})
+    def unit_count
+      params.require(:order).permit(
+        {unit_count: [:carrier, :regular, :hard]})
+    end
+  
+  def units
+    @unit_array = Array.new
   end
   ################################################
 end
