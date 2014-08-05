@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   
   belongs_to :user
   default_scope -> { order('created_at DESC') }
+  has_many :units, dependent: :destroy
   
   validates :user_id, presence: true
 #  validates :unit_count, presence: true

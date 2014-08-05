@@ -1,0 +1,12 @@
+<li>
+  <div class="col-sm-4 thumbnail">
+    <%= image_tag(Unit::UNIT_IMAGE[@unit.type], alt: @unit.type, class: "unit") %>
+  </div>
+  
+  <div class="col-sm-8 thumbnail">
+    <div class="col-sm-8 caption">
+      <h3><%= @unit.name %></h3>
+      <p><%= @unit.content %></p>
+  </div>
+  </div>
+</li>

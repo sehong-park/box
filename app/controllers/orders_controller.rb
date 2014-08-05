@@ -27,8 +27,8 @@ class OrdersController < ApplicationController
   end
   
   def create
+    @unit_params = unit_count
     @order = current_user.orders.build(order_params)
-    calculate_charge(@order)
     
     if @order.save
       flash[:success] = "New order created!"
@@ -54,17 +54,25 @@ class OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @user = current_user
+    @units = @order.units.paginate(page: params[:page], per_page: 10)
   end
   
   private ########################################
     def order_params
-      params.require(:order).permit(:unit_count,
-                                    :pickup_datetime,
-                                    :delivery_datetime,
-                                    :pickup_address,
-                                    :delivery_address,
-                                    :why_ordering)           
+      @raw_params = params.require(:order).permit(
+        {unit_count: [:carrier, :regular, :hard]},
+        {pickup_datetime: [:year, :month, :day, :hour]},
+        {delivery_datetime: [:year, :month, :day, :hour]},
+        :pickup_address,
+        :delivery_address,
+        :why_ordering)
+      
+      @order_params = filtered_order(@raw_params)
     end
+  
+  def unit_count
+    params.require(:order).permit(
+      {unit_count: [:carrier, :regular, :hard]})
+  end
   ################################################
 end

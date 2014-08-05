@@ -1,6 +1,6 @@
 <div class="col-sm-4 col-md-4">
   <div class="thumbnail">
-    <%= image_tag("http://goo.gl/fYejCs", alt: "캐리어", class: "unit") %>
+    <%= image_tag(Unit::UNIT_IMAGE[:carrier], alt: "캐리어", class: "unit") %>
     <div class="caption">
       <h3><%= "캐리어" %></h3>
       <%= select_tag("order[unit_count][carrier]", options_for_select(Unit::UNIT_RANGE), prompt: "수량", class: "form-control input-lg") %>
@@ -9,7 +9,7 @@
 </div>
 <div class="col-sm-4 col-md-4">
   <div class="thumbnail">
-    <%= image_tag("http://goo.gl/wH8z0E", alt: "종이박스", class: "unit") %>
+    <%= image_tag(Unit::UNIT_IMAGE[:regular], alt: "일반박스", class: "unit") %>
     <div class="caption">
       <h3><%= "일반박스" %></h3>
         <%= select_tag("order[unit_count][regular]", options_for_select(Unit::UNIT_RANGE), prompt: "수량", class: "form-control input-lg") %>
@@ -18,7 +18,7 @@
 </div>
 <div class="col-sm-4 col-md-4">
   <div class="thumbnail">
-    <%= image_tag("http://goo.gl/NOC18R", alt: "하드박스", class: "unit") %>
+    <%= image_tag(Unit::UNIT_IMAGE[:hard], alt: "하드박스", class: "unit") %>
     <div class="caption">
       <h3><%= "하드박스" %></h3>
       <%= select_tag("order[unit_count][hard]", options_for_select(Unit::UNIT_RANGE), prompt: "수량", class: "form-control input-lg") %>

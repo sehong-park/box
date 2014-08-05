@@ -1,25 +1,51 @@
 <% provide(:title, @order.why_ordering) %>
-<div class="row">
-  <aside class="col-sm-4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-      <h3><%= @order.why_ordering %></h3>
-      <p>unit_count : <%= @order.unit_count %></p>
-      <p>store_weeks : <%= @order.store_weeks %></p>
-      <p>Charge : <%= @order.charge %></p>
-    </section>
-  </aside>
-  <div class="col-sm-8">
-    
-    <h3></h3>
-      <ol class="units">
-        1. <br/>
-        2. <br/>
-        3. <br/>
-      </ol>
-    
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">서비스 내역</div>
+  <div class="panel-body">
+    <p>보관품 개수 : <%= @order.unit_count %></p>
+    <p>보관 기간 : <%= @order.pickup_datetime.strftime("%Y-%m-%d") %> ~ <%= @order.delivery_datetime.strftime("%Y-%m-%d") %></p>
+    <p>청구금액 : ￦ <%= @order.charge %></p>
   </div>
+
+  <!-- Table -->
+  <thead>
+        <tr>
+          <th>Date</th>
+          <th>Company</th>
+          <th>Tax</th>
+          <th>Salesperson</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @invoices.each do |invoice| %>
+        <tr>
+          <td><%= invoice.date.strftime("%Y-%m-%d") %></td>
+          <td><%= invoice.company %></td>
+          <td><%= invoice.tax %></td>
+          <td><%= invoice.salesperson %></td>
+          <td><%= link_to 'Show', invoice, class: 'btn btn-primary' %></td>
+          <td><%= link_to 'Edit', edit_invoice_path(invoice), class: 'btn btn-success' %></td>
+          <td><%= link_to 'Destroy', invoice, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
+<h1>
+  <%= @order.why_ordering %>
+</h1>
+
+>
+
+
+<% if @order.units.any? %>
+<h3>Units (<%= @order.units.count %>)</h3>
+<ol class="units">
+  <%= render @units %>
+</ol>
+<%= will_paginate @units %>
+<% end %>
+
