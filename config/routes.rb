@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders
+  resources :units
+  
   
   root 'welcome#index'
   
@@ -12,4 +14,6 @@ Rails.application.routes.draw do
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'
+  match '/cunit', to: 'units#create', via: 'post'
+  #
 end

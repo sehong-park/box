@@ -27,12 +27,18 @@ class OrdersController < ApplicationController
   end
   
   def create
+    @unit_params = Hash.new
     @unit_params = unit_count
+    
     @order = current_user.orders.build(order_params)
     
     if @order.save
       flash[:success] = "New order created!"
-      redirect_to @order
+      @unit_params[:order_id] = @order.id
+      
+      redirect_to('/cunit',
+        flash: {order_id: @order.id, unit_count: @unit_params})
+
     else
       flash[:warning] = "Ordering failed.."
       
