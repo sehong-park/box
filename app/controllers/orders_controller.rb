@@ -68,6 +68,10 @@ class OrdersController < ApplicationController
     @units = @order.units.paginate(page: params[:page], per_page: 10)
   end
   
+  def edit
+    
+  end
+  
   private ########################################
     def order_params
       @raw_params = params.require(:order).permit(

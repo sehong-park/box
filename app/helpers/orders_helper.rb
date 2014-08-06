@@ -25,7 +25,9 @@ module OrdersHelper
     secs = order[:delivery_datetime] - order[:pickup_datetime]
     days = secs / 60 / 60 / 24
     order[:store_weeks] = (days / 7).ceil
-    order[:charge] = order[:unit_count] * order[:store_weeks] * 9900 + 14900
+    order[:store_weeks] = 1 if order[:store_weeks] == 0
+    order[:charge] = charge(
+      9900, order[:unit_count], order[:store_weeks], 14900)
     order
   end
   
@@ -43,4 +45,15 @@ module OrdersHelper
       object: object
     }
   end
+  
+  ######################################
+  private
+    def charge(unit_charge, unit_count, store_weeks, delivery_charge)
+      charge = unit_charge * unit_count * store_weeks
+      count_discount = Math.log2(unit_count ** 9).ceil / 100.0
+      weeks_discount = (Math.log2(store_weeks) / 100.0).round(3)
+      charge = charge * (1 - count_discount) * (1 - weeks_discount)
+      charge += delivery_charge
+      charge.round(-2)
+    end
 end
