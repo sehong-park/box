@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :orders
   resources :units
   
+  namespace :admin do
+    resources :users, :orders, :units
+  end
   
   root 'welcome#index'
   
@@ -15,5 +18,6 @@ Rails.application.routes.draw do
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'
   
-  #
+  # ADMIN PAGE
+  match '/admin', to: 'admin/admin#index', via: 'get'
 end

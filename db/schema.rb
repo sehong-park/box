@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805145823) do
+ActiveRecord::Schema.define(version: 20140806095311) do
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 20140805145823) do
     t.datetime "updated_at"
     t.datetime "pickup_datetime"
     t.datetime "delivery_datetime"
+    t.boolean  "permitted",         default: false
+    t.text     "units_info"
   end
 
   add_index "orders", ["delivery_datetime"], name: "index_orders_on_delivery_datetime"

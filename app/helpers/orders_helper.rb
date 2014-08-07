@@ -7,6 +7,10 @@ module OrdersHelper
     h_cnt = order[:unit_count][:hard].to_i
     order[:unit_count] = c_cnt + r_cnt + h_cnt
     
+    #units
+    order[:units_info] =
+      "carrier: #{c_cnt}, regular: #{r_cnt}, hard: #{h_cnt}"
+    
     #pickup_datetime
     year = order[:pickup_datetime][:year]
     month = order[:pickup_datetime][:month]
@@ -28,6 +32,7 @@ module OrdersHelper
     order[:store_weeks] = 1 if order[:store_weeks] == 0
     order[:charge] = charge(
       9900, order[:unit_count], order[:store_weeks], 14900)
+    
     order
   end
   
@@ -50,7 +55,11 @@ module OrdersHelper
   private
     def charge(unit_charge, unit_count, store_weeks, delivery_charge)
       charge = unit_charge * unit_count * store_weeks
-      count_discount = Math.log2(unit_count ** 9).ceil / 100.0
+      unless unit_count == 0
+        count_discount = Math.log2(unit_count ** 9).ceil / 100.0
+      else
+        count_discount = 0
+      end
       weeks_discount = (Math.log2(store_weeks) / 100.0).round(3)
       charge = charge * (1 - count_discount) * (1 - weeks_discount)
       charge += delivery_charge

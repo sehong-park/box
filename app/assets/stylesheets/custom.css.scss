@@ -214,5 +214,16 @@ aside {
     height: 200px;
   }
 }
-
+.order-show {
+  .control-label {
+    margin-top: 4px;
+  }
+}
 /* collapse */
+
+/* admin */
+#admin {
+  .nav {
+    font-weight: bold;
+  }
+}
