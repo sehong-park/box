@@ -3,7 +3,12 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :units, dependent: :destroy
   
-  default_scope -> { order('created_at DESC') }
+  STATUS = {ordered: 0, # 주문완료
+            permitted: 1, # 승인(입금)완료
+            picking_up: 2, # 픽업중
+            stored: 3, # 보관중
+            delivering: 4, # 회송중
+            delivered: 5} # 회송완료
   
   validates :user_id, presence: true
   validates :unit_count, presence: true, numericality: { greater_than: 0 }
