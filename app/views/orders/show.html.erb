@@ -42,7 +42,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">예상 금액</label>
             <div class="col-sm-10">
-              <p class="form-control-static">￦ <%= @order.charge %></p>
+              <p class="form-control-static">￦ <%= number_with_delimiter @order.charge %></p>
             </div>
           </div>
         </form>

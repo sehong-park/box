@@ -60,7 +60,7 @@ class OrdersController < ApplicationController
   
   def edit
     @order = Order.find(params[:id])
-    updating_deny if @order.permitted
+    updating_deny if (@order.status != 0 && !current_user.admin?)
     
     @unit_body = collapse_panel_body("orders/unit")
     @unit_panel = collapse_panel(1, "보관품 정보를 알려주세요!", @unit_body)
@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
-    updating_deny if @order.permitted
+    updating_deny if (@order.status != 0 && !current_user.admin?)
     
     if @order.update_attributes(order_params)
       flash[:success] = "Order updated"
@@ -88,9 +88,16 @@ class OrdersController < ApplicationController
   end
   
   def destroy
-    Order.find(params[:id]).destroy
-    flash[:success] = "Order deleted."
-    redirect_back_or admin_path
+    @order = Order.find(params[:id])
+    
+    if @order.status == 0
+      @order.destroy
+      flash[:success] = "Order deleted."
+    else
+      flash[:warning] = "Deleting denied."
+    end
+    
+    redirect_back_or root_path
   end
   
   private ########################################

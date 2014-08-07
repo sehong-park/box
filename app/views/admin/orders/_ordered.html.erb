@@ -21,7 +21,7 @@
           <td><%= new_order.user.phone %></td>
           <td><%= new_order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></td>
           <td><%= new_order.pickup_address %></td>
-          <td><%= link_to '승인', admin_order_path(new_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
+          <td><%= link_to '입금확인 및 문자전송', admin_order_path(new_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
           <td><%= link_to '보기', order_path(new_order), class: 'btn btn-sm btn-default' %></td>
           <td><%= link_to '수정', edit_order_path(new_order), class: 'btn btn-sm btn-warning' %></td>
           <td><%= link_to '삭제', order_path(new_order), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } %></td>

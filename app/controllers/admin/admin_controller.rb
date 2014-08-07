@@ -3,10 +3,22 @@ class Admin::AdminController < ApplicationController
   http_basic_authenticate_with name: "iambox", password: "iambox"
   
   def index
-    @new_orders = Order.order(created_at: :asc).where(status: Order::STATUS[:orderd])
-    pickup_range = (Time.now - 21.day)..Time.now.midnight
-    @orders_waiting_for_pickup = Order.order(pickup_datetime: :desc).where(
-      { pickup_datetime: pickup_range, status: Order::STATUS[:permitted] })
+    @new_orders = Order.order(created_at: :asc).where(status: Order::STATUS[:ordered])
+    
+    @permitted_orders = Order.order(pickup_datetime: :asc).where(
+      status: Order::STATUS[:permitted])
+    
+    @picking_up_orders = Order.order(pickup_datetime: :asc).where(
+      status: Order::STATUS[:picking_up])
+    
+    @stored_orders = Order.order(delivery_datetime: :asc).where(
+      status: Order::STATUS[:stored])
+    
+    @delivering_orders = Order.order(delivery_datetime: :asc).where(
+      status: Order::STATUS[:delivering])
+    
+    @delivered_orders = Order.order(delivery_datetime: :asc).where(
+      status: Order::STATUS[:delivered])
   end
   
   

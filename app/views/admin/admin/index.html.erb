@@ -1,0 +1,22 @@
+<% provide(:title, '관리자모드') %>
+<div class="row" id="admin">
+  <aside class="col-sm-2">
+    <section>
+      <ul class="nav nav-pills nav-stacked">
+        <li><%= link_to '회원' %></li>
+        <li><%= link_to '주문' %></li>
+        <li><%= link_to '설정' %></li>
+      </ul>
+    </section>
+  </aside>
+
+  <div class="col-sm-10">
+    <%= render 'admin/orders/ordered', new_orders: @new_orders %>
+    <%= render 'admin/orders/permitted', permitted_orders: @permitted_orders %>
+    <%= render 'admin/orders/picking_up', picking_up_orders: @picking_up_orders %>
+    <%= render 'admin/orders/stored', stored_orders: @stored_orders %>
+    <%= render 'admin/orders/delivering', delivering_orders: @delivering_orders %>
+    <%= render 'admin/orders/delivered', delivered_orders: @delivered_orders %>
+  </div>
+
+</div>

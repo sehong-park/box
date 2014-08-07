@@ -5,12 +5,13 @@ class Admin::OrdersController < ApplicationController
     @new_orders = Order.where(permitted: false)
   end
   
-  def update # only for permitted 새 주문을 승인한다
-    @new_order = Order.find(params[:id])
+  def update # 주문의 STATUS를 다음단계로 진행한다
+    @order = Order.find(params[:id])
+    status = @order.status.to_i + 1
     
-    if @new_order.update_attributes(permitted: true)
-      flash[:success] = "Order updated"
-      redirect_to admin_path
+    if @order.update_attributes(status: status)
+      flash[:success] = "Orders Status incresed"
+      redirect_back_or admin_path
     else
       redirect_back_or admin_path
     end
