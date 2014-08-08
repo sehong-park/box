@@ -6,6 +6,8 @@ class Unit < ActiveRecord::Base
                hard: "http://goo.gl/NOC18R" }
   
   belongs_to :order
+  
   validates :order_id, presence: true
+  validates :unit_type, presence: true
 
 end

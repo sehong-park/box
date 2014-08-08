@@ -21,7 +21,7 @@
           <td><%= picking_up_order.user.phone %></td>
           <td><%= picking_up_order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></td>
           <td><%= picking_up_order.pickup_address %></td>
-          <td><%= link_to '보관완료', admin_order_path(picking_up_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
+          <td><%= link_to '유닛등록 및 보관완료', admin_order_path(picking_up_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
           <td><%= link_to '보기', order_path(picking_up_order), class: 'btn btn-sm btn-default' %></td>
           <td><%= link_to '수정', edit_order_path(picking_up_order), class: 'btn btn-sm btn-warning' %></td>
         </tr>

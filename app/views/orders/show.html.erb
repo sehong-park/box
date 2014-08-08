@@ -67,6 +67,11 @@
         </ol>
         <%= will_paginate @units %>
         <% end %>
+        <% if current_user.admin? %>
+        <a href="/admin/units/new.<%=params[:id]%>" class="btn btn-success btn-lg pull-right" role="button">
+          <span class="glyphicon glyphicon-ok"></span> 유닛생성
+        </a>
+        <% end %>
       </div>
     </div>
   </div>

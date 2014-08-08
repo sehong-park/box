@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   
   # ADMIN PAGE
   match '/admin', to: 'admin/admin#index', via: 'get'
+
 end
