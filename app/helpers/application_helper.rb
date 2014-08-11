@@ -9,4 +9,8 @@ module ApplicationHelper
       "#{base_title} | #{page_title}"
     end
   end
+  
+  def icon(name, text)
+    "<span class='glyphicon glyphicon-#{name}'></span>".html_safe<<" #{text}"
+  end
 end

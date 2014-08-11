@@ -17,7 +17,7 @@ html {
 }
 
 body {
-
+  margin-top: 100px;
 }
 
 section {
@@ -40,6 +40,10 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.btn-lg {
+  font-weight: bold;
 }
 
 /* typography */
@@ -77,6 +81,9 @@ header {
   background-color: $brand-success;
 
   .nav {
+    .open > a {
+      color: $brand-success;
+    }
     a {
       color: white;
       &:hover {
@@ -209,7 +216,7 @@ aside {
   }
 }
 
-#new_order {
+.new_order, .edit_order {
   .thumbnail {
     img {
       height: 200px;
