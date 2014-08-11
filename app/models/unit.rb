@@ -7,7 +7,15 @@ class Unit < ActiveRecord::Base
   
   belongs_to :order
   
+  has_attached_file :img,
+    styles: { medium: "200x200>", thumb: "64x64>" },
+    :default_url => "/images/:style/missing.png"
+
+  validates_attachment :img, presence: true,
+    content_type: { content_type: ["image/jpeg", "image/gif"] },
+  size: { in: 0.. 2.megabytes }
+  
   validates :order_id, presence: true
   validates :unit_type, presence: true
-
+  
 end

@@ -15,10 +15,31 @@ class Admin::UnitsController < ApplicationController
       flash[:warning] = "Creating failed.."
     end
   end
+  
+  def edit
+    @unit = Unit.find(params[:id])
+  end
+  
+  def update
+    @unit = Unit.find(params[:id])
+    if @unit.update_attributes(unit_params)
+      flash[:success] = "Unit updated"
+      redirect_to @unit.order
+    else
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    @unit = Unit.find(params[:id])
+    @unit.destroy
+    flash[:success] = "Unit deleted."
+    redirect_back_or order_path(@unit.order)
+  end
 
   ########################
     def unit_params
-      params.require(:unit).permit(:name, :content, :unit_type, :order_id)
+      params.require(:unit).permit(:name, :content, :unit_type, :order_id, :img)
     end
   ########################
 end

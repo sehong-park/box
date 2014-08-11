@@ -46,7 +46,7 @@
             </div>
           </div>
         </form>
-        
+
         <a href="<%= edit_order_path(params[:id])%>" class="btn btn-success btn-lg pull-left" role="button">
           <span class="glyphicon glyphicon-pencil"></span> 수정하기
         </a>
@@ -58,10 +58,10 @@
 
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <div class="panel-heading">보관 내역</div>
+      <% if @order.units.any? %>
+      <div class="panel-heading">보관 물품 <span class="badge badge-lg"><%= @order.units.count %></span></div>
       <div class="panel-body">
-        <% if @order.units.any? %>
-        <h3>Units (<%= @order.units.count %>)</h3>
+
         <ol class="units">
           <%= render @units %>
         </ol>
@@ -71,8 +71,8 @@
         <a href="/admin/units/new.<%=params[:id]%>" class="btn btn-success btn-lg pull-right" role="button">
           <span class="glyphicon glyphicon-ok"></span> 유닛생성
         </a>
-        <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  
+
 }
 
 section {
@@ -75,7 +75,7 @@ header {
   font-weight: bold;
   padding: 20px 10px 20px 10px;
   background-color: $brand-success;
-  
+
   .nav {
     a {
       color: white;
@@ -208,12 +208,15 @@ aside {
     margin-bottom: 5px;
   }
 }
-.thumbnail {
-  img {
-    width: 200px;
-    height: 200px;
+
+#new_order {
+  .thumbnail {
+    img {
+      height: 200px;
+    }
   }
 }
+
 .order-show {
   .control-label {
     margin-top: 4px;
@@ -225,5 +228,16 @@ aside {
 #admin {
   .nav {
     font-weight: bold;
+  }
+}
+
+/* unit */
+.units {
+  list-style: none;
+  margin: 10px 0 0 0;
+  
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
   }
 }

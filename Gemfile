@@ -6,6 +6,9 @@ gem 'rails', '4.1.0'
 gem 'faker'
 gem 'will_paginate-bootstrap'
 
+# Paperclip for Image
+gem "paperclip", "~> 4.1"
+
 # Use pgSQL or sqlite3 as the database for Active Record
 group :production do
   gem 'pg'
