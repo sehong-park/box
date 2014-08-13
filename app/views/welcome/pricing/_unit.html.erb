@@ -1,0 +1,9 @@
+<div class="unit">
+  <div class="thumbnail">
+    <%= image_tag(Unit::UNIT_IMAGE[:carrier], alt: "캐리어", class: "unit") %>
+    <div class="caption">
+      <h3>보관 물품</h3>
+      <%= select_tag("order[unit_count][carrier]", options_for_select(Unit::UNIT_RANGE), prompt: "수량", class: "form-control input-lg") %>
+    </div>
+  </div>
+</div>

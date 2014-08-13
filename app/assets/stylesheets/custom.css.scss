@@ -228,7 +228,7 @@ aside {
   }
 }
 
-.new_order, .edit_order {
+.unit {
   .thumbnail {
     img {
       height: 200px;
@@ -258,5 +258,32 @@ aside {
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
+  }
+}
+
+/* welcome */
+.welcome-padding {
+  padding-top: 100px;
+}
+.welcome-margin {
+  margin-top: 60px;
+}
+
+#iambox {
+  
+}
+
+#usage {
+  width: 100%;
+  max-width: 1080px;
+}
+
+#pricing {
+  #location2 {
+    margin-top: 85px;
+  }
+  #result {
+    margin-top: 45px;
+    text-align: left;
   }
 }
