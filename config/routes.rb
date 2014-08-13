@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'
+  match '/pricing', to: 'orders#pricing', via: 'get'
   
   # ADMIN PAGE
   match '/admin', to: 'admin/admin#index', via: 'get'

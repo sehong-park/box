@@ -1,15 +1,15 @@
 <div id="location2">
   <div class="row">
     <div class="col-sm-5">
-      <label for="pricing_pickup_location">픽업지역</label>
-      <%= select_tag("pricing[pickup_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+      <label for="order_pickup_location">픽업지역</label>
+      <%= select_tag("order[pickup_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
     </div>
     <div class="col-sm-2">
       ->
     </div>
     <div class="col-sm-5">
-      <label for="pricing_delivery_location">회송지역</label>
-      <%= select_tag("pricing[delivery_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+      <label for="order_delivery_location">회송지역</label>
+      <%= select_tag("order[delivery_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
     </div>
   </div>
 </div>

@@ -8,6 +8,12 @@ class OrdersController < ApplicationController
     
   end
   
+  def pricing
+    @order = Order.new(pricing_order_param)
+    
+    render 
+  end
+  
   def new
     @order = Order.new
     
@@ -147,5 +153,16 @@ class OrdersController < ApplicationController
       flash[:warning] = "이미 승인된 내용을 수정할 수 없습니다."
       redirect_back_or(root_path) 
     end
+  
+  def pricing_order_params
+    @raw_params = params.require(:order).permit(
+        :unit_count,
+        {pickup_datetime: [:year, :month, :day]},
+        {delivery_datetime: [:year, :month, :day]},
+        :pickup_location,
+        :delivery_location)
+      
+      @pricing_order = pricing_order(@raw_params)
+  end
   ################################################
 end

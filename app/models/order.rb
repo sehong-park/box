@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
             delivering: 4, # 회송중
             delivered: 5} # 회송완료
   
-  LOCATION = ["서울", "경기", "인천공항"]
+  LOCATION = [["서울", 0], ["경기", 7500] , ["인천공항", 45000]]
   
   validates :user_id, presence: true
   validates :unit_count, presence: true, numericality: { greater_than: 0 }
