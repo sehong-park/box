@@ -9,9 +9,11 @@ class OrdersController < ApplicationController
   end
   
   def pricing
-    @order = Order.new(pricing_order_param)
+    @pricing_order = Order.new(pricing_order_params)
     
-    render 
+#    respond_to do |format|
+#      format.js
+#    end
   end
   
   def new
@@ -161,8 +163,8 @@ class OrdersController < ApplicationController
         {delivery_datetime: [:year, :month, :day]},
         :pickup_location,
         :delivery_location)
-      
-      @pricing_order = pricing_order(@raw_params)
+    
+      #@pricing_order = pricing_order(@raw_params)
   end
   ################################################
 end

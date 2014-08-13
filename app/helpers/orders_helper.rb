@@ -25,7 +25,7 @@ module OrdersHelper
     order[:transport_price] = transport_price(order[:pickup_location],
                                               order[:delivery_location])
     #charge(total_price)
-    order[:charge] = 9900 * order[:unit_count] * order[:store_weeks] * (1 - unit_discount) * (1 - weeks_discount) + order[:transport_price]
+    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount]) * (1 - order[:weeks_discount]) + order[:transport_price]
     order[:charge].round(-2)
     
     order
@@ -98,6 +98,7 @@ module OrdersHelper
     end
   
     def unit_discount(unit_count)
+      unit_count = unit_count.to_i
       unless unit_count == 0
         unit_discount = Math.log2(unit_count ** 9).ceil / 100.0
       else
@@ -115,7 +116,7 @@ module OrdersHelper
     end
   
     def transport_price(pickup_location, delivery_location)
-      pickup_location + delivery_location + 14900
+      pickup_location.to_i + delivery_location.to_i + 14900
     end
   #######################################
 end
