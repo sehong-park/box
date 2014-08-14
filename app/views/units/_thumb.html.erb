@@ -1,0 +1,7 @@
+<ul class="thumb-unit">
+  <% order.units.each do |unit| %>
+  <li class="pull-left">
+    <%= image_tag(unit.img.url(:thumb), alt: unit.unit_type, class: "unit") %>
+  </li>
+  <% end %>
+</ul>

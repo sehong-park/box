@@ -260,6 +260,11 @@ aside {
     border-top: 1px solid #e8e8e8;
   }
 }
+.thumb-unit {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 /* welcome */
 .welcome-padding {
@@ -280,7 +285,7 @@ aside {
 
 #pricing {
   #location2 {
-    margin-top: 85px;
+    margin-top: 45px;
   }
   #result {
     margin-top: 45px;

@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @units = @order.units.paginate(page: params[:page], per_page: 10)
+    @units = @order.units
   end
   
   def edit

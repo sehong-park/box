@@ -9,7 +9,7 @@ class Unit < ActiveRecord::Base
   belongs_to :order
   
   has_attached_file :img,
-    styles: { medium: "200x200>", thumb: "64x64>" },
+    styles: { medium: "200x200>", thumb: "32x32>" },
     :default_url => "/images/:style/missing.png"
 
   validates_attachment :img, presence: true,

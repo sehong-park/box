@@ -6,11 +6,12 @@
     <table class="table">
       <thead>
         <tr>
-          <th><span class="glyphicon glyphicon-user"></span>사용자</th>
-          <th><span class="glyphicon glyphicon-phone"></span>연락처</th>
-          <th><span class="glyphicon glyphicon-calendar"></span>회송일</th>
-          <th><span class="glyphicon glyphicon-home"></span>회송장소</th>
-          <th colspan="3"></th>
+          <th><%= icon :user, "사용자" %></th>
+          <th><%= icon :phone, "연락처" %></th>
+          <th><%= icon :calendar, "회송일" %></th>
+          <th><%= icon :home, "회송장소" %></th>
+          <th><%= icon :briefcase, "보관품" %></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -21,9 +22,12 @@
           <td><%= stored_order.user.phone %></td>
           <td><%= stored_order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></td>
           <td><%= stored_order.delivery_address %></td>
-          <td><%= link_to '회송출발', admin_order_path(stored_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
-          <td><%= link_to '보기', order_path(stored_order), class: 'btn btn-sm btn-default' %></td>
-          <td><%= link_to '수정', edit_order_path(stored_order), class: 'btn btn-sm btn-warning' %></td>
+          <td><%= render 'units/thumb', order: stored_order %></td>
+          <td>
+            <%= link_to '회송출발', admin_order_path(stored_order), method: :patch, class: 'btn btn-sm btn-success' %>
+            <%= link_to '보기', order_path(stored_order), class: 'btn btn-sm btn-default' %>
+            <%= link_to '수정', edit_order_path(stored_order), class: 'btn btn-sm btn-warning' %>
+          </td>
         </tr>
         <% end %>
       </tbody>

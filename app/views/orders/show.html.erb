@@ -65,7 +65,6 @@
         <ol class="units">
           <%= render @units %>
         </ol>
-        <%= will_paginate @units %>
         <% end %>
         <% if current_user.admin? %>
         <a href="/admin/units/new.<%=params[:id]%>" class="btn btn-success btn-lg pull-right" role="button">
