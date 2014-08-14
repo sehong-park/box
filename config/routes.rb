@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   
   root 'welcome#index'
   
+  
   # LOGIN
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
