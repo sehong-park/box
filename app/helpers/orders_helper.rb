@@ -10,6 +10,8 @@ module OrdersHelper
     order[:delivery_datetime] = Time.new(order[:delivery_datetime][:year],
                                          order[:delivery_datetime][:month],
                                          order[:delivery_datetime][:day])
+    #unit_count
+    order[:unit_count] = order[:unit_count].to_i
     
     #store_weeks
     order[:store_weeks] = store_weeks(order[:pickup_datetime],
@@ -21,12 +23,17 @@ module OrdersHelper
     #unit_discount
     order[:unit_discount] = unit_discount(order[:unit_count])
     
+    #locations
+    order[:pickup_location] = order[:pickup_location].to_i
+    order[:delivery_location] = order[:delivery_location].to_i
+    
     #transport_price
     order[:transport_price] = transport_price(order[:pickup_location],
                                               order[:delivery_location])
+    
     #charge(total_price)
     order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount]) * (1 - order[:weeks_discount]) + order[:transport_price]
-    order[:charge].round(-2)
+    order[:charge] = order[:charge].round(-2)
     
     order
   end

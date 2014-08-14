@@ -9,11 +9,15 @@ class OrdersController < ApplicationController
   end
   
   def pricing
-    @pricing_order = Order.new(pricing_order_params)
-    
-#    respond_to do |format|
-#      format.js
-#    end
+    @pricing = pricing_order_params
+    @pricing[:storing_normal] = Unit::PRICE[:default] * @pricing[:unit_count] * @pricing[:store_weeks]
+    @pricing[:storing_discounted] = (@pricing[:storing_normal] * (1 - @pricing[:unit_discount]) * (1 - @pricing[:weeks_discount])).round(-2)
+    @data = @pricing
+#    render 'test/test'
+#    render 'welcome/pricing/_result'
+    respond_to do |format|
+      format.js
+    end
   end
   
   def new
@@ -121,6 +125,16 @@ class OrdersController < ApplicationController
       @order_params = filtered_order(@raw_params)
     end
   
+    def order_attributes(attributes)
+      attributes.permit(
+        :unit_count,
+        :pickup_datetime,
+        :delivery_datetime,
+        :pickup_address,
+        :delivery_address,
+        :why_ordering)
+    end
+  
     def unit_count
       params.require(:order).permit(
         {unit_count: [:carrier, :regular, :hard]})
@@ -157,14 +171,14 @@ class OrdersController < ApplicationController
     end
   
   def pricing_order_params
-    @raw_params = params.require(:order).permit(
+    raw_params = params.require(:order).permit(
         :unit_count,
         {pickup_datetime: [:year, :month, :day]},
         {delivery_datetime: [:year, :month, :day]},
         :pickup_location,
         :delivery_location)
     
-      #@pricing_order = pricing_order(@raw_params)
+      pricing_order(raw_params)
   end
   ################################################
 end

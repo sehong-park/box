@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-10 col-md-offset-1 well">
-      <%= form_tag("/pricing", method: "get", remote: true, id: "pricing-form") do %>
+      <%= form_tag("/pricing", method: :get, authenticity_token: true, remote: true, id: "pricing-form") do %>
       <div class="row">
         <div class="col-sm-6">
           <%= render 'welcome/pricing/unit' %>

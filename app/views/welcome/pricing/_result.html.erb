@@ -1,38 +1,31 @@
 <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th>일반</th>
-        <th>할인</th>
-        <th>할인적용</th>
-      </tr>
-    </thead>
-    <tfoot>
-      <tr>
-        <td>합계</td>
-        <td>157,900</td>
-        <td>33,100</td>
-        <td><strong>134,900</strong></td>
-      </tr>
-    </tfoot>
-    <tbody>
-      <tr>
-        <td>보관비</td>
-        <td>143,000
-          <p class="help-block">개당보관가(9,900) x 수량 x 기간(주)</p>
-        </td>
-        <td>23,000</td>
-        <td>120,000</td>
-      </tr>
-      <tr>
-        <td>배송비</td>
-        <td>
-          25,000
-          <p class="help-block">서울 - 서울</p>
-        </td>
-        <td>10,100</td>
-        <td>14,900</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <thead>
+    <tr>
+      <th></th>
+      <th>일반</th>
+      <th>할인</th>
+      <th>할인적용</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td>보관비</td>
+      <td>￦ <%= number_with_delimiter @pricing[:storing_normal] %>
+        <p class="help-block">개당보관가(<%= number_with_delimiter Unit::PRICE[:default] %>) x 수량(<%= @pricing[:unit_count] %>) x 기간(<%= @pricing[:store_weeks] %> 주)</p>
+      </td>
+      <td>￦ <%= number_with_delimiter(@pricing[:storing_normal] - @pricing[:storing_discounted]) %></td>
+      <td>￦ <%= number_with_delimiter @pricing[:storing_discounted] %></td>
+    </tr>
+    <tr>
+      <td>배송비</td>
+      <td colspan="2"></td>
+      <td>￦ <%= number_with_delimiter @pricing[:transport_price] %></td>
+    </tr>
+    <tr>
+      <td><strong>합계</strong></td>
+      <td colspan="2"></td>
+      <td><strong>￦ <%= number_with_delimiter @pricing[:charge] %></strong></td>
+    </tr>
+  </tbody>
+</table>
