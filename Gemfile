@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 gem 'faker'
 gem 'will_paginate-bootstrap'
 
-# Paperclip for Image
+# Text Editor: Rich, Paperclip
+gem 'rich'
 gem "paperclip", "~> 4.1"
 
 # Use pgSQL or sqlite3 as the database for Active Record

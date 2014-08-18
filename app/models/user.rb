@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   # Model Relation
   has_many :orders, dependent: :destroy
+  has_many :articles, dependent: :destroy
   
   # Before Action
   before_save { self.email = email.downcase }

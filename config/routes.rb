@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  mount Rich::Engine => '/rich', :as => 'rich'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders
   resources :units
+  resources :articles
   
   namespace :admin do
     resources :users, :orders, :units
@@ -18,7 +20,10 @@ Rails.application.routes.draw do
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'
+  
+  # WELCOME
   match '/pricing', to: 'orders#pricing', via: 'get'
+  match '/qna', to: 'articles#qna', via: 'get'
   
   # ADMIN PAGE
   match '/admin', to: 'admin/admin#index', via: 'get'

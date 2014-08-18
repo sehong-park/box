@@ -1,0 +1,32 @@
+<% provide(:title, "질문") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>자주하는 질문</th>
+          <th>날짜</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td data-toggle="collapse" data-target="#1">물품보관 픽업/회송은 어떻게 진행되나요?</td>
+          <td>2014-08-13</td>
+        </tr>
+        <tr id="1" class="collapse">
+          <td colspan="2" >Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</td>
+        </tr>
+        
+        <tr>
+          <td data-toggle="collapse" href="#2">물품보관은 안전한가요?</td>
+          <td>2014-08-12</td>
+        </tr>
+        <tr class="collapse" id="2">
+          <td colspan="2">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to '질문하기', new_article_path, class: "btn btn-success" %>
+  </div>
+</div>
