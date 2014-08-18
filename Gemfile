@@ -7,7 +7,7 @@ gem 'will_paginate-bootstrap'
 
 # Text Editor: Rich, Paperclip
 gem 'rich'
-gem "paperclip", "~> 4.1"
+gem "paperclip", "~> 4.1" 
 
 # Use pgSQL or sqlite3 as the database for Active Record
 group :production do
