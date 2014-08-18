@@ -28,4 +28,7 @@ Rails.application.routes.draw do
   # ADMIN PAGE
   match '/admin', to: 'admin/admin#index', via: 'get'
 
+  # FOOTER
+  match '/policy', to: 'welcome#policy', via: 'get'
+  match '/privacy', to: 'welcome#privacy', via: 'get'
 end

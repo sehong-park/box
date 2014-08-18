@@ -1,0 +1,12 @@
+<% provide(:title, "질문하기") %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for @article do |f| %>
+    <%= f.label :title, "제목" %>
+    <%= f.text_field :title, class: "form-control input-lg", placeholder: "질문제목.." %>
+
+    <%= f.label :content, "내용" %>
+    <%= f.text_area :content, :as => :rich, :config => { :default_style => "myCrazyPaperclipStyle" }, class: "form-control input-lg", placeholder: "예) 홍길동" %>
+    <% end %>
+  </div>
+</div>
