@@ -32,12 +32,12 @@ module OrdersHelper
       order[:delivery_location])
 
     #charge(total_price)
-    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount]) * (1 - order[:weeks_discount]) + order[:transport_price]
+    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount] + order[:weeks_discount]) + order[:transport_price]
     order[:charge] = order[:charge].round(-2)
 
     #charge description
     order[:storing_normal] = Unit::PRICE[:default] * order[:unit_count] * order[:store_weeks]
-    order[:storing_discounted] = (order[:storing_normal] * (1 - order[:unit_discount]) * (1 - order[:weeks_discount])).round(-2)
+    order[:storing_discounted] = (order[:storing_normal] * (1 - order[:unit_discount] + order[:weeks_discount])).round(-2)
 
     order
   end
@@ -57,34 +57,36 @@ module OrdersHelper
     year = order[:pickup_datetime][:year]
     month = order[:pickup_datetime][:month]
     day = order[:pickup_datetime][:day]
-    order[:pickup_datetime] = Time.new(year, month, day)
+    hour = order[:pickup_datetime][:hour]
+    order[:pickup_datetime] = Time.new(year, month, day, hour)
 
     #delivery_datetime
     year = order[:delivery_datetime][:year]
     month = order[:delivery_datetime][:month]
     day = order[:delivery_datetime][:day]
-    order[:delivery_datetime] = Time.new(year, month, day)
+    hour = order[:delivery_datetime][:hour]
+    order[:delivery_datetime] = Time.new(year, month, day, hour)
 
     #store_weeks
     order[:store_weeks] = store_weeks(order[:pickup_datetime],
       order[:delivery_datetime])
 
     #weeks_discount
-    order[:weeks_discount] = weeks_discount(order[:store_weeks])
+    weeks_dc = weeks_discount(order[:store_weeks])
 
     #unit_discount
-    order[:unit_discount] = unit_discount(order[:unit_count])
+    unit_dc = unit_discount(order[:unit_count])
 
     #locations
     order[:pickup_location] = order[:pickup_location].to_i
     order[:delivery_location] = order[:delivery_location].to_i
 
     #transport_price
-    order[:transport_price] = transport_price(order[:pickup_location],
+    transport_price = transport_price(order[:pickup_location],
       order[:delivery_location])
 
     #charge(total_price)
-    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount]) * (1 - order[:weeks_discount]) + order[:transport_price]
+    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - unit_dc + weeks_dc) + transport_price
     order[:charge] = order[:charge].round(-2)
     
     order
@@ -131,7 +133,7 @@ module OrdersHelper
 
   def store_weeks(pickup_datetime, delivery_datetime)
     secs = delivery_datetime - pickup_datetime
-    weeks = (secs == 0) ? 1 : (secs / 60 / 60 / 24 / 7).ceil
+    weeks = (secs <= 0) ? 1 : (secs / 60 / 60 / 24 / 7).ceil
   end
 
   def weeks_discount(weeks)

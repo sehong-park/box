@@ -17,7 +17,11 @@ class Order < ActiveRecord::Base
   validates :units_info, presence: true
   validates :store_weeks, presence: true
   validates :charge, presence: true
+  validates :pickup_datetime, presence: true
+  validates :delivery_datetime, presence: true
+  validates :pickup_location, presence: true
   validates :pickup_address, presence: true, length: { maximum: 100 }
+  validates :delivery_location, presence: true
   validates :delivery_address, presence: true, length: { maximum: 100 }
   validates :why_ordering, presence: true, length: { maximum: 20 }
 end

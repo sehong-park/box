@@ -60,8 +60,8 @@ header {
     a {
       color: white;
       &:hover {
-      color: $brand-success;
-  }
+        color: $brand-success;
+      }
     }
     .dropdown-menu {
       a {
@@ -104,15 +104,15 @@ footer {
   border-top: 1px solid $gray-medium-light;
   color: $gray;
   text-align: center;
-  
+
   nav {
     padding-top: 10px;
   }
-  
+
   #company-info {
     padding: 15px 0 0 0;
   }
-  
+
   a {
     color: $gray;
     &:hover {
@@ -120,7 +120,7 @@ footer {
       text-decoration: none;
     }
   }
-  
+
   ul {
     list-style: none;
     margin: 0;
@@ -194,10 +194,6 @@ input {
 .timestamp {
   color: $gray-light;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
 aside {
   textarea {
     height: 100px;
@@ -218,6 +214,10 @@ aside {
     margin-top: 4px;
   }
 }
+.terms {
+  height: 200px;
+  overflow-y: scroll; /* showing scrollbars */ 
+}
 /* collapse */
 
 /* admin */
@@ -231,7 +231,7 @@ aside {
 .units {
   list-style: none;
   margin: 10px 0 0 0;
-  
+
   li {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;

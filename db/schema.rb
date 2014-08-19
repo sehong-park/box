@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818094802) do
+ActiveRecord::Schema.define(version: 20140819105425) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140818094802) do
     t.datetime "delivery_datetime"
     t.text     "units_info"
     t.integer  "status",            default: 0
+    t.integer  "pickup_location"
+    t.integer  "delivery_location"
   end
 
   add_index "orders", ["delivery_datetime"], name: "index_orders_on_delivery_datetime"

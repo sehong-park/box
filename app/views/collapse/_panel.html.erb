@@ -14,13 +14,13 @@
           <span class="glyphicon glyphicon-chevron-left"></span>이전
         </a>
       <% end %>
-      <% if panel[:number] != 4 %>
+      <% if panel[:number] != 5 %>
         <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= panel[:number]+1 %>" class="btn btn-success btn-lg pull-right" role="button">
           다음<span class="glyphicon glyphicon-chevron-right"></span>
         </a>
       <% else %>
         <button class="btn btn-lg btn-success pull-right" name="button" type="submit">
-          다음<span class="glyphicon glyphicon-chevron-right"></span>
+          동의<span class="glyphicon glyphicon-chevron-right"></span>
         </button>
       <% end %>
    </div>

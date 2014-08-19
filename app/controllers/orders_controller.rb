@@ -32,10 +32,12 @@ class OrdersController < ApplicationController
 
     @why_body = collapse_panel_body("orders/why_ordering")
     @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
+    
+    @terms_body = collapse_panel_body("orders/terms")
+    @terms_panel = collapse_panel(5, "이용약관에 동의해주세요!", @terms_body)
   end
   
-  def create    
-    #@unit_params = unit_count
+  def create
     @order = current_user.orders.build(order_params)
     
     if @order.save
@@ -113,8 +115,8 @@ class OrdersController < ApplicationController
         {unit_count: [:carrier, :regular, :hard]},
         {pickup_datetime: [:year, :month, :day, :hour]},
         {delivery_datetime: [:year, :month, :day, :hour]},
-        :pickup_address,
-        :delivery_address,
+        :pickup_address, :pickup_location,
+        :delivery_address, :delivery_location,
         :why_ordering)
       
       order_params = filtered_order(raw_params)

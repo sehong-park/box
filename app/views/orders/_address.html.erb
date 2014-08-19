@@ -1,24 +1,36 @@
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-3">
     <div class="form-group">
+      <label for="order_pickup_location">픽업 지역</label>
+      <%= select_tag("order[pickup_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">      
       <label for="order_pickup_address">픽업 주소</label>
       <%= text_field(:order, :pickup_address, class: "form-control input-lg", placeholder: "예) 서울시 강남구 역삼동 683-34 4층")%>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <label>픽업 시간</label>
     <%= select_hour(Time.now.hour, {prefix: "order[pickup_datetime]", start_hour: 10, end_hour: 20, prompt: "시"}, {class: "form-control input-lg"}) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label for="order_pickup_location">회송 지역</label>
+      <%= select_tag("order[delivery_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+    </div>
+  </div>
+  <div class="col-sm-6">
     <div class="form-group">
       <label for="order_delivery_address">회송 주소</label>
       <%= text_field(:order, :delivery_address, class: "form-control input-lg", placeholder: "예) 서울시 강남구 역삼동 683-34 4층")%>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <label>회송 시간</label>
     <%= select_hour(Time.now.hour, {prefix: "order[delivery_datetime]", start_hour: 10, end_hour: 20, prompt: "시"}, {class: "form-control input-lg"}) %>
   </div>
