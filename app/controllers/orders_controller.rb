@@ -10,9 +10,7 @@ class OrdersController < ApplicationController
   
   def pricing
     @pricing = pricing_order_params
-    @pricing[:storing_normal] = Unit::PRICE[:default] * @pricing[:unit_count] * @pricing[:store_weeks]
-    @pricing[:storing_discounted] = (@pricing[:storing_normal] * (1 - @pricing[:unit_discount]) * (1 - @pricing[:weeks_discount])).round(-2)
-    @data = @pricing
+    
 #    render 'test/test'
 #    render 'welcome/pricing/_result'
     respond_to do |format|
@@ -31,10 +29,7 @@ class OrdersController < ApplicationController
     
     @address_body = collapse_panel_body("orders/address")
     @address_panel = collapse_panel(3, "픽업장소와 회송장소를 알려주세요!", @address_body)
-    
-#    @user_body = collapse_panel_body("orders/user")
-#    @user_panel = collapse_panel(4, "사용자 정보를 알려주세요!", @user_body)
-    
+
     @why_body = collapse_panel_body("orders/why_ordering")
     @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
   end
@@ -114,7 +109,7 @@ class OrdersController < ApplicationController
   
   private ########################################
     def order_params
-      @raw_params = params.require(:order).permit(
+      raw_params = params.require(:order).permit(
         {unit_count: [:carrier, :regular, :hard]},
         {pickup_datetime: [:year, :month, :day, :hour]},
         {delivery_datetime: [:year, :month, :day, :hour]},
@@ -122,7 +117,7 @@ class OrdersController < ApplicationController
         :delivery_address,
         :why_ordering)
       
-      @order_params = filtered_order(@raw_params)
+      order_params = filtered_order(raw_params)
     end
   
     def order_attributes(attributes)
