@@ -109,10 +109,6 @@ footer {
     padding-top: 10px;
   }
 
-  #company-info {
-    padding: 15px 0 0 0;
-  }
-
   a {
     color: $gray;
     &:hover {
@@ -215,8 +211,7 @@ aside {
   }
 }
 .terms {
-  height: 200px;
-  overflow-y: scroll; /* showing scrollbars */ 
+  
 }
 /* collapse */
 

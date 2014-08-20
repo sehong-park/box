@@ -58,6 +58,9 @@ class OrdersController < ApplicationController
       @why_body = collapse_panel_body("orders/why_ordering")
       @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
       
+      @terms_body = collapse_panel_body("orders/terms")
+      @terms_panel = collapse_panel(5, "이용약관에 동의해주세요!", @terms_body)
+      
       render 'new'
     end
   end
