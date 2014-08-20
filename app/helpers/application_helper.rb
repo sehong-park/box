@@ -13,4 +13,12 @@ module ApplicationHelper
   def icon(name, text)
     "<span class='glyphicon glyphicon-#{name}'></span>".html_safe<<" #{text}"
   end
+  
+  def badge(text)
+    "<span class='badge'>#{text}</span>".html_safe
+  end
+  
+  def label(text, type = 'default')
+    "<span class='label label-#{type}'>#{text}</span>".html_safe
+  end
 end

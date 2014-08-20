@@ -16,9 +16,17 @@
       <tbody>
         <% @user.orders.each do |order| %>
         <tr>
-          <td><%= link_to(order.why_ordering, order_path(order)) %></td>
-          <td><%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></td>
-          <td><%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></td>
+          <td><strong><%= link_to(order.why_ordering, order_path(order)) %></strong></td>
+          <td>
+            <p><%= label "주소" %> <%= order.pickup_address %></p>
+            <p><%= label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
+          </td>
+          
+          <td>
+            <p><%= label "주소" %> <%= order.delivery_address %></p>
+            <p><%= label "주소" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
+          </td>
+          
           <td><%= render 'units/thumb', order: order%></td>
         </tr>
         <% end %>
