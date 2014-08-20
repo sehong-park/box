@@ -2,7 +2,7 @@
   <div class="col-sm-3">
     <div class="form-group">
       <label for="order_pickup_location">픽업 지역</label>
-      <%= select_tag("order[pickup_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+      <%= select_tag("order[pickup_location]", options_for_select(Order::LOCATION, @order.pickup_location), selected: "서울", class: "form-control input-lg") %>
     </div>
   </div>
   <div class="col-sm-6">
@@ -21,7 +21,7 @@
   <div class="col-sm-3">
     <div class="form-group">
       <label for="order_pickup_location">회송 지역</label>
-      <%= select_tag("order[delivery_location]", options_for_select(Order::LOCATION), selected: "서울", class: "form-control input-lg") %>
+      <%= select_tag("order[delivery_location]", options_for_select(Order::LOCATION, @order.delivery_location), selected: "서울", class: "form-control input-lg") %>
     </div>
   </div>
   <div class="col-sm-6">

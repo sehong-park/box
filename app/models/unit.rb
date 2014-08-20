@@ -1,6 +1,7 @@
 class Unit < ActiveRecord::Base
   
   PRICE = {default: 9900}
+  TYPES = [:carrier, :regular, :hard]
   UNIT_RANGE = (1..10).to_a
   UNIT_IMAGE = { carrier: "http://goo.gl/fYejCs",
                regular: "http://goo.gl/wH8z0E",

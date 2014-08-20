@@ -6,10 +6,10 @@
     <table class="table">
       <thead>
         <tr>
-          <th><%= icon(:file, "주문") %></th>
-          <th><%= icon(:calendar, "픽업") %></th>
-          <th><%= icon(:calendar, "회송") %></th>
-          <th><%= icon(:briefcase, "보관품") %></th>
+          <th><%= bs_icon(:file, "주문") %></th>
+          <th><%= bs_icon(:calendar, "픽업") %></th>
+          <th><%= bs_icon(:calendar, "회송") %></th>
+          <th><%= bs_icon(:briefcase, "보관품") %></th>
         </tr>
       </thead>
 
@@ -18,13 +18,13 @@
         <tr>
           <td><strong><%= link_to(order.why_ordering, order_path(order)) %></strong></td>
           <td>
-            <p><%= label "주소" %> <%= order.pickup_address %></p>
-            <p><%= label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
+            <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
+            <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
           </td>
           
           <td>
-            <p><%= label "주소" %> <%= order.delivery_address %></p>
-            <p><%= label "주소" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
+            <p><%= bs_label "주소" %> <%= order.delivery_address %></p>
+            <p><%= bs_label "주소" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
           </td>
           
           <td><%= render 'units/thumb', order: order%></td>

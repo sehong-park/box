@@ -1,15 +1,21 @@
 module OrdersHelper
-
+  
+  def unit_count(order, type)
+    order.units_info.split(',')[Unit::TYPES.index(type.to_sym)].last if order.units_info != nil
+  end
+  
   def pricing_order(order)
     #pickup_datetime
     order[:pickup_datetime] = Time.new(order[:pickup_datetime][:year],
       order[:pickup_datetime][:month],
-      order[:pickup_datetime][:day])
+      order[:pickup_datetime][:day],
+      "+09:00")
 
     #delivery_datetime
     order[:delivery_datetime] = Time.new(order[:delivery_datetime][:year],
       order[:delivery_datetime][:month],
-      order[:delivery_datetime][:day])
+      order[:delivery_datetime][:day],
+      "+09:00")
     #unit_count
     order[:unit_count] = order[:unit_count].to_i
 

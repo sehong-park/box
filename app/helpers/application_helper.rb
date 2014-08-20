@@ -10,15 +10,16 @@ module ApplicationHelper
     end
   end
   
-  def icon(name, text)
+  def bs_icon(name, text)
     "<span class='glyphicon glyphicon-#{name}'></span>".html_safe<<" #{text}"
   end
   
-  def badge(text)
+  def bs_badge(text)
     "<span class='badge'>#{text}</span>".html_safe
   end
   
-  def label(text, type = 'default')
+  def bs_label(text, type = 'default')
     "<span class='label label-#{type}'>#{text}</span>".html_safe
   end
+  
 end
