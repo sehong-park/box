@@ -8,14 +8,13 @@ module OrdersHelper
     #pickup_datetime
     order[:pickup_datetime] = Time.new(order[:pickup_datetime][:year],
       order[:pickup_datetime][:month],
-      order[:pickup_datetime][:day],
-      "+09:00")
+      order[:pickup_datetime][:day])
 
     #delivery_datetime
     order[:delivery_datetime] = Time.new(order[:delivery_datetime][:year],
       order[:delivery_datetime][:month],
-      order[:delivery_datetime][:day],
-      "+09:00")
+      order[:delivery_datetime][:day])
+    
     #unit_count
     order[:unit_count] = order[:unit_count].to_i
 
@@ -64,14 +63,14 @@ module OrdersHelper
     month = order[:pickup_datetime][:month]
     day = order[:pickup_datetime][:day]
     hour = order[:pickup_datetime][:hour]
-    order[:pickup_datetime] = Time.new(year, month, day, hour)
+    order[:pickup_datetime] = Time.new(year, month, day, hour, 0, 0, "+09:00")
 
     #delivery_datetime
     year = order[:delivery_datetime][:year]
     month = order[:delivery_datetime][:month]
     day = order[:delivery_datetime][:day]
     hour = order[:delivery_datetime][:hour]
-    order[:delivery_datetime] = Time.new(year, month, day, hour)
+    order[:delivery_datetime] = Time.new(year, month, day, hour, 0, 0, "+09:00")
 
     #store_weeks
     order[:store_weeks] = store_weeks(order[:pickup_datetime],
