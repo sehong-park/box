@@ -135,7 +135,6 @@ footer {
 }
 
 /* forms */
-
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   margin-bottom: 15px;
@@ -254,5 +253,11 @@ aside {
   #result {
     margin-top: 45px;
     text-align: left;
+  }
+}
+
+#use_report {
+  .caption {
+    height: 204px;
   }
 }
