@@ -5,69 +5,68 @@
       <!-- Default panel contents -->
       <div class="panel-heading">신청 내역</div>
       <div class="panel-body">
-        <form class="form-horizontal order-show" role="form">
-          <div class="form-group">
-            <label class="col-sm-2 control-label">보관 목적</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"><%= @order.why_ordering %></p>
-            </div>
+        <%= form_for @order, html: {class: "form-horizontal order-show"} do |f| %>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">보관 목적</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @order.why_ordering %></p>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">보관품 총 개수</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"><%= @order.unit_count %></p>
-              <p><span class="help-block"><%= @order.units_info %></span></p>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">보관품 총 개수</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @order.unit_count %></p>
+            <p><span class="help-block"><%= @order.units_info %></span></p>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">보관 기간</label>
-            <div class="col-sm-10">
-              <p class="form-control-static">
-                <%= @order.pickup_datetime.strftime("%Y-%m-%d") %> ~ <%= @order.delivery_datetime.strftime("%Y-%m-%d") %>
-              </p>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">보관 기간</label>
+          <div class="col-sm-10">
+            <p class="form-control-static">
+              <%= @order.pickup_datetime.strftime("%Y-%m-%d") %> ~ <%= @order.delivery_datetime.strftime("%Y-%m-%d") %>
+            </p>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">픽업 장소</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"><%= @order.pickup_address %></p>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">픽업 장소</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @order.pickup_address %></p>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label">회송 장소</label>
-            <div class="col-sm-10">
-              <p class="form-control-static"><%= @order.delivery_address %></p>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">회송 장소</label>
+          <div class="col-sm-10">
+            <p class="form-control-static"><%= @order.delivery_address %></p>
           </div>
+        </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">
-              <%= @order.status == 0 ? '예상 금액' : '결제 금액' %>
-            </label>
-            <div class="col-sm-10">
-              <p class="form-control-static">￦ <%= number_with_delimiter @order.charge %></p>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">
+            <%= @order.status == 0 ? '예상 금액' : '결제 금액' %>
+          </label>
+          <div class="col-sm-10">
+            <p class="form-control-static">￦ <%= number_with_delimiter @order.charge %></p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <%= check_box(:order, :extra_checked, html: {id: "extra_checked"}) %>
+                <p class="text-danger">보관 물품의 수, 부피, 지역 등의 차이로 인해 추가금액이 발생할 수 있습니다.</p>
+              </label>
             </div>
           </div>
-
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="order[extra_checked]" id="extra_checked">
-                  <p class="text-danger">보관 물품의 수, 부피, 지역 등의 차이로 인해 추가금액이 발생할 수 있습니다.</p>
-                </label>
-              </div>
-            </div>
-          </div>
-
-        </form>
+        </div>
 
         <a href="<%= edit_order_path(params[:id])%>" class="btn btn-success btn-lg pull-left" role="button">
           <span class="glyphicon glyphicon-pencil"></span> 수정하기
         </a>
-        <button class="btn btn-success btn-lg pull-right" disabled="disabled">
+        <button class="btn btn-success btn-lg pull-right" disabled="disabled" id="ordering_btn" type="submit">
           <span class="glyphicon glyphicon-ok"></span> 주문완료
         </button>
+        <% end %>
       </div>
     </div>
 

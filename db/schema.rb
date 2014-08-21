@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819105425) do
+ActiveRecord::Schema.define(version: 20140821041438) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140819105425) do
     t.integer  "status",            default: 0
     t.integer  "pickup_location"
     t.integer  "delivery_location"
+    t.boolean  "extra_checked"
   end
 
   add_index "orders", ["delivery_datetime"], name: "index_orders_on_delivery_datetime"

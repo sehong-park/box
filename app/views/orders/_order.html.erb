@@ -14,7 +14,7 @@
       </thead>
 
       <tbody>
-        <% @user.orders.each do |order| %>
+        <% @orders.each do |order| %>
         <tr>
           <td><strong><%= link_to(order.why_ordering, order_path(order)) %></strong></td>
           <td>

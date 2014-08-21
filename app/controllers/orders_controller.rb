@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :signed_in_user, except: [:pricing]
-  before_action :owner_or_admin, only: [:show, :edit, :update, :delete]
+  before_action :owner_or_admin, only: [:show, :edit, :update, :delete, :checked]
   
   include OrdersHelper
   
@@ -20,21 +20,6 @@ class OrdersController < ApplicationController
   
   def new
     @order = Order.new
-    
-    @unit_body = collapse_panel_body("orders/unit")
-    @unit_panel = collapse_panel(1, "보관품 정보를 알려주세요!", @unit_body)
-  
-    @date_body = collapse_panel_body("orders/date")
-    @date_panel = collapse_panel(2, "보관기간을 알려주세요!", @date_body)
-    
-    @address_body = collapse_panel_body("orders/address")
-    @address_panel = collapse_panel(3, "픽업장소와 회송장소를 알려주세요!", @address_body)
-
-    @why_body = collapse_panel_body("orders/why_ordering")
-    @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
-    
-    @terms_body = collapse_panel_body("orders/terms")
-    @terms_panel = collapse_panel(5, "이용약관에 동의해주세요!", @terms_body)
   end
   
   def create
@@ -45,22 +30,6 @@ class OrdersController < ApplicationController
       redirect_to @order
     else
       flash[:warning] = "Ordering failed.."
-      
-      @unit_body = collapse_panel_body("orders/unit")
-      @unit_panel = collapse_panel(1, "보관품 정보를 알려주세요!", @unit_body)
-  
-      @date_body = collapse_panel_body("orders/date")
-      @date_panel = collapse_panel(2, "보관기간을 알려주세요!", @date_body)
-    
-      @address_body = collapse_panel_body("orders/address")
-      @address_panel = collapse_panel(3, "픽업장소와 회송장소를 알려주세요!", @address_body)
-      
-      @why_body = collapse_panel_body("orders/why_ordering")
-      @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
-      
-      @terms_body = collapse_panel_body("orders/terms")
-      @terms_panel = collapse_panel(5, "이용약관에 동의해주세요!", @terms_body)
-      
       render 'new'
     end
   end
@@ -74,20 +43,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     updating_deny if (@order.status != 0 && !current_user.admin?)
     
-    @unit_body = collapse_panel_body("orders/unit")
-    @unit_panel = collapse_panel(1, "보관품 정보를 알려주세요!", @unit_body)
-  
-    @date_body = collapse_panel_body("orders/date")
-    @date_panel = collapse_panel(2, "보관기간을 알려주세요!", @date_body)
     
-    @address_body = collapse_panel_body("orders/address")
-    @address_panel = collapse_panel(3, "픽업장소와 회송장소를 알려주세요!", @address_body)
-    
-    @why_body = collapse_panel_body("orders/why_ordering")
-    @why_panel = collapse_panel(4, "보관목적을 알려주세요!", @why_body)
-    
-    @terms_body = collapse_panel_body("orders/terms")
-    @terms_panel = collapse_panel(5, "이용약관에 동의해주세요!", @terms_body)
   end
   
   def update
@@ -96,7 +52,7 @@ class OrdersController < ApplicationController
     
     if @order.update_attributes(order_params)
       flash[:success] = "Order updated"
-      redirect_to @order
+      redirect_to current_user
     else
       render 'edit'
     end
@@ -123,9 +79,9 @@ class OrdersController < ApplicationController
         {delivery_datetime: [:year, :month, :day, :hour]},
         :pickup_address, :pickup_location,
         :delivery_address, :delivery_location,
-        :why_ordering)
+        :why_ordering, :extra_checked)
       
-      order_params = filtered_order(raw_params)
+      raw_params.has_key?("extra_checked") ? raw_params : order_params = filtered_order(raw_params)
     end
   
     def order_attributes(attributes)
@@ -182,6 +138,10 @@ class OrdersController < ApplicationController
         :delivery_location)
     
       pricing_order(raw_params)
+  end
+  
+  def checked_params
+    params.require(:order).permit(:extra_checked)
   end
   ################################################
 end
