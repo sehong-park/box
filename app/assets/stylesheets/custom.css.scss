@@ -245,11 +245,20 @@ aside {
 }
 
 #usage {
-  width: 100%;
-  max-width: 1080px;
+  .well {
+    background-color: $brand-success;
+  }
+  img {
+    width: 100%;
+    max-width: 1080px;
+  }
 }
 
 #pricing {
+  .well {
+    background-color: $brand-success;
+    color: white;
+  }
   #location2 {
     margin-top: 57px;
   }
@@ -259,6 +268,11 @@ aside {
   }
 }
 #using_type {
+  .well {
+    background-color: $brand-success;
+    color: white;
+  }
+  
   .thumbnail {
     img {
       height: 300px;
@@ -266,7 +280,8 @@ aside {
   }
 }
 #use_report {
-  .caption {
-
+  .well {
+    background-color: $brand-success;
+    color: white;
   }
 }
