@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  
+
 }
 
 section {
@@ -258,9 +258,15 @@ aside {
     text-align: left;
   }
 }
-
+#using_type {
+  .thumbnail {
+    img {
+      height: 300px;
+    }
+  }
+}
 #use_report {
   .caption {
-    
+
   }
 }
