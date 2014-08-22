@@ -1,10 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-sm-3">
-    <%= render 'users/user' %>
-  </aside>
-  <div class="col-sm-9">
+  <div class="col-sm-10 col-sm-offset-1">
     <%= render 'orders/order' %>
-    <%= link_to "물품 보관신청", ordering_path, class: "btn btn-lg btn-success" %>
+    <%= link_to "물품 보관신청", ordering_path, class: "btn btn-lg btn-success pull-right" %>
   </div>
 </div>
