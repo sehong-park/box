@@ -239,6 +239,9 @@ aside {
 #iambox {
   background-color: white;
   color: $gray-dark;
+  img {
+    height: 300px;
+  }
 }
 
 #usage {
