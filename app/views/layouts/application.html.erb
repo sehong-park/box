@@ -9,6 +9,9 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+
+    <div id="status"></div>
     <%= render 'layouts/header' %>
     <div class="container-fluid main">
       <% flash.each do |key, value| %>

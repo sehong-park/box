@@ -1,7 +1,6 @@
 @import "bootstrap";
 
 /* mixins, variables, etc. */
-
 $gray-medium-light: #eaeaea;
 
 @mixin box_sizing {
@@ -209,28 +208,25 @@ aside {
 /* welcome */
 .welcome-padding {
   padding: 80px 0 80px 0;
-  h2 {
+  .welcome-header {
     margin-bottom: 60px;
   }
 }
-.welcome-margin {
-  margin-top: 60px;
-}
-
 
 $blue-light: #466299;
 #iambox {
   background-color: $blue-light;
   color: white;
-  h1 {
-    font-size: 48px;
-  }
+  
   .iambox-charactor {
     max-height: 420px;
   }
   .iambox-text {
     width: 100%;
     max-width: 600px;
+  }
+  .btn {
+    margin-top: 50px;
   }
 }
 
