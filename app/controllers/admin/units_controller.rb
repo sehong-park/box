@@ -7,12 +7,13 @@ class Admin::UnitsController < ApplicationController
 
   def create
     @unit = Unit.new(unit_params)
-
+    
     if @unit.save
       flash[:success] = "New unit created!"
       redirect_to @unit.order
     else
       flash[:warning] = "Creating failed.."
+      render 'new'
     end
   end
   

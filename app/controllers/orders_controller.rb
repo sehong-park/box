@@ -42,8 +42,6 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
     updating_deny if (@order.status != 0 && !current_user.admin?)
-    
-    
   end
   
   def update

@@ -1,14 +1,13 @@
-<div class="jumbotron" id="iambox">
-  <div class="row">
-    <div class="col-md-5">
-      <%= image_tag("welcome/main_character.png") %>
-    </div>
-    <div class="col-md-7">
-      <h1>아이엠박스</h1>
-      <h3>
-        찾아가는 물품보관 서비스 <a href="#"><strong>아이엠박스</strong></a>
-      </h3>
-      <%= link_to "물품 보관하기", ordering_path, class: "btn btn-lg btn-success welcome-margin" %>
+<div class="row welcome-padding" id="iambox">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-5">
+        <%= image_tag("welcome/main_character.png", class: "iambox-charactor") %>
+      </div>
+      <div class="col-md-7">
+        <%= image_tag("welcome/main_text.png", class: "iambox-text") %>
+        <%= link_to "물품보관 신청하기", ordering_path, class: "btn btn-lg btn-default welcome-margin" %>
+      </div>
     </div>
   </div>
 </div>

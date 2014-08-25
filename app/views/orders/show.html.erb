@@ -59,13 +59,16 @@
             </div>
           </div>
         </div>
-
-        <a href="<%= edit_order_path(params[:id])%>" class="btn btn-success btn-lg pull-left" role="button">
-          <span class="glyphicon glyphicon-pencil"></span> 수정하기
-        </a>
-        <button class="btn btn-success btn-lg pull-right" disabled="disabled" id="ordering_btn" type="submit">
-          <span class="glyphicon glyphicon-ok"></span> 주문완료
-        </button>
+        <% if @order.status == 0 || current_user.admin? %>
+          <a href="<%= edit_order_path(params[:id])%>" class="btn btn-success btn-lg pull-left" role="button">
+            <span class="glyphicon glyphicon-pencil"></span> 수정하기
+          </a>
+        <% end %>
+        <% unless @order.extra_checked %>
+          <button class="btn btn-success btn-lg pull-right" disabled="disabled" id="ordering_btn" type="submit">
+            <span class="glyphicon glyphicon-ok"></span> 주문완료
+          </button>
+        <% end %>
         <% end %>
       </div>
     </div>

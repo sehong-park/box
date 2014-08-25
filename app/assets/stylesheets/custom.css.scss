@@ -16,7 +16,7 @@ html {
 }
 
 body {
-
+  font-family:'나눔고딕',"Nanum Gothic", NanumGothic, verdana,'돋움',dotum,sans-serif;
 }
 
 section {
@@ -51,17 +51,19 @@ textarea {
 header {
   font-weight: bold;
   padding: 20px 10px 20px 10px;
-  background-color: $brand-success;
+  background-color: white;
+
+  box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
+  -moz-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
+  -webkit-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
+
+  .navbar {
+    margin-bottom: 0;
+  }
 
   .nav {
-    .open > a {
-      color: $brand-success;
-    }
     a {
-      color: white;
-      &:hover {
-        color: $brand-success;
-      }
+      color: $gray;
     }
     .dropdown-menu {
       a {
@@ -73,21 +75,12 @@ header {
 
 #logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  line-height: 1;
   &:hover {
     text-decoration: none;
   }
   img {
     padding: 0;
-    width: 25px;
-    height: 25px;
+    height: 40px;
   }
 }
 
@@ -145,33 +138,18 @@ input {
   height: auto !important;
 }
 
-#error_explanation {
-  color: #f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
+/* users */
+#users_show {
+  .order-img {
+    height: 100px;
+  }
+  p {
+    padding: 10px 0 10px 0;
+  }
+  button {
+    width: 100%;
   }
 }
-
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
-}
-
-/* Users index */
-.users {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-top: 1px solid $gray-lighter;
-    &:last-child {
-      border-bottom: 1px solid $gray-lighter;
-    }
-  }
-}
-
 /* orders */
 .orders {
   list-style: none;
@@ -230,35 +208,55 @@ aside {
 
 /* welcome */
 .welcome-padding {
-  padding-top: 100px;
+  padding: 80px 0 80px 0;
+  h2 {
+    margin-bottom: 60px;
+  }
 }
 .welcome-margin {
   margin-top: 60px;
 }
 
+
+$blue-light: #466299;
 #iambox {
-  background-color: white;
-  color: $gray-dark;
-  img {
-    height: 320px;
+  background-color: $blue-light;
+  color: white;
+  h1 {
+    font-size: 48px;
+  }
+  .iambox-charactor {
+    max-height: 420px;
+  }
+  .iambox-text {
+    width: 100%;
+    max-width: 600px;
   }
 }
 
 #usage {
-  .well {
-    background-color: $brand-success;
+  background-color: white;
+  color: $gray-darker;
+  .step-image {
+    width: 100%;
+    max-width: 250px;
   }
+}
+
+#when_use {
+  background-color: #636363;
+  color: white;
   img {
     width: 100%;
-    max-width: 1080px;
+    max-width: 300px;
   }
 }
 
 #pricing {
-  .well {
-    background-color: $brand-success;
-    color: white;
-  }
+
+  background-color: #FF409F;
+  color: white;
+
   #location2 {
     margin-top: 57px;
   }
@@ -268,18 +266,16 @@ aside {
   }
 }
 #using_type {
-  .well {
-    background-color: $brand-success;
-    color: white;
-  }
-  
-  .thumbnail {
-    img {
-      height: 300px;
-    }
+  background-color: #636363;
+  color: white;
+  img {
+    height: 300px;
   }
 }
 #use_report {
+  background-color: #E9E9E9;
+  color: #435E93;
+
   .well {
     background-color: $brand-success;
     color: white;

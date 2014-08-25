@@ -1,4 +1,4 @@
 <div class="form-group">
   <label for="order_pickup_address">보관 목적</label>
-  <%= text_field(:order, :why_ordering, class: "form-control input-lg", placeholder: "예) 기숙사 이전")%>
+  <%= select_tag("order[why_ordering]", options_for_select(Order::WHY_ORDERING, selected: @order.why_ordering), class: "form-control input-lg")%>
 </div>

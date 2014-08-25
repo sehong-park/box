@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="users_show">
   <div class="panel-heading">
     물품보관 <span class="badge"><%= @user.orders.count %></span>
   </div>
@@ -16,7 +16,7 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><strong><%= link_to(order.why_ordering, order_path(order)) %></strong></td>
+          <td><strong><%= link_to(image_tag('logo.jpg', alt: order.why_ordering), order_path(order), class: "order-img") %></strong></td>
           <td>
             <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
             <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
@@ -24,10 +24,13 @@
           
           <td>
             <p><%= bs_label "주소" %> <%= order.delivery_address %></p>
-            <p><%= bs_label "주소" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
+            <p><%= bs_label "시간" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
           </td>
           
-          <td><%= render 'units/thumb', order: order%></td>
+          <td>
+            <p><button type="button" class="btn btn-default btn-xs"><%= bs_icon("picture", pluralize(order.units.count, 'photo') ) %></button></p>
+            <p><button type="button" class="btn btn-default btn-xs"><%= bs_icon("share-alt", "회송요청") %></button></p>
+          </td>
         </tr>
         <% end %>
       </tbody>

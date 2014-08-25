@@ -3,7 +3,7 @@ class Admin::AdminController < ApplicationController
   http_basic_authenticate_with name: "iambox", password: "iambox"
   
   def index
-    @new_orders = Order.order(created_at: :asc).where(status: Order::STATUS[:ordered])
+    @new_orders = Order.order(created_at: :asc).where(status: Order::STATUS[:ordered], extra_checked: true)
     
     @permitted_orders = Order.order(pickup_datetime: :asc).where(
       status: Order::STATUS[:permitted])
