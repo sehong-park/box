@@ -14,9 +14,13 @@ Rails.application.routes.draw do
   
   
   # LOGIN
-  match '/signup', to: 'users#new', via: 'get'
-  match '/signin', to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+  #match '/signup', to: 'users#new', via: 'get'
+  #match '/signin', to: 'sessions#new', via: 'get'
+  #match '/signout', to: 'sessions#destroy', via: 'delete'
+  #match 
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'

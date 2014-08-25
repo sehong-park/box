@@ -20,12 +20,12 @@
                 <li><%= link_to "내 정보", user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "로그아웃", signout_path, method: "delete" %>
+                  <%= link_to "로그아웃", signout_path %>
                 </li>
               </ul>
             </li>
           <% else %>
-          <li><%= link_to bs_icon("user", "로그인"), signin_path %></li>
+          <li><%= link_to bs_icon("user", "Facebook 로그인"), "#", id: "sign_in" %></li>
           <% end %>
         </ul>
       </nav>
