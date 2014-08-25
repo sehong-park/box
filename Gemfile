@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-#facebook login
+#facebook login https://coderwall.com/p/bsfitw
+gem 'omniauth'
 gem 'omniauth-facebook'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

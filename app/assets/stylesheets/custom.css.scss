@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
@@ -15,7 +16,7 @@ html {
 }
 
 body {
-  font-family:'나눔고딕',"Nanum Gothic", NanumGothic, verdana,'돋움',dotum,sans-serif;
+  font-family: "Nanum Gothic", sans-serif;
 }
 
 section {
