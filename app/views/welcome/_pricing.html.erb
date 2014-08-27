@@ -1,20 +1,19 @@
 <div id="pricing" class="row welcome-padding">
   <div class="col-md-12">
-    <h2><strong>물품보관 예상견적</strong></h2>
-    <div class="well">
-      <%= form_tag("/pricing", method: :get, authenticity_token: true, remote: true, id: "pricing-form") do %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= render 'welcome/pricing/unit' %>
-        </div>
-        <div class="col-sm-6">
-          <%= render 'welcome/pricing/date' %>
-          <%= render 'welcome/pricing/address' %>
-        </div>
+    <h2 class="welcome-header"><strong>물품보관 예상견적</strong></h2>
+
+    <%= form_tag("/pricing", method: :get, authenticity_token: true, remote: true, id: "pricing-form") do %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render 'welcome/pricing/unit' %>
       </div>
-      <% end %>
-      <%= link_to "물품 보관신청", ordering_path, class: "btn btn-lg btn-success" %>
-      <div class="row" id="result"></div>
+      <div class="col-sm-6">
+        <%= render 'welcome/pricing/date' %>
+        <%= render 'welcome/pricing/address' %>
+      </div>
     </div>
+    <% end %>
+    <%= link_to "물품 보관신청", ordering_path, class: "btn btn-lg btn-primary" %>
+    <div class="row" id="result"></div>
   </div>
 </div>

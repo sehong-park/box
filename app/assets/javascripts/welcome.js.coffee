@@ -11,5 +11,4 @@ $(document).on "page:change", ->
         type: 'GET'
         dataType: 'script'
         data: $(this).serialize()
-    
-    
+        

@@ -211,6 +211,9 @@ aside {
   padding: 80px 0 80px 0;
   .welcome-header {
     margin-bottom: 60px;
+    font-size: 34px;
+    width: 100%;
+    max-width: 1380px;
   }
 }
 
@@ -218,7 +221,7 @@ $blue-light: #466299;
 #iambox {
   background-color: $blue-light;
   color: white;
-  
+
   .iambox-charactor {
     max-height: 420px;
   }
@@ -240,9 +243,27 @@ $blue-light: #466299;
   }
 }
 
+#use_report {
+  
+}
+
+#values {
+  background-color: #7EB4F1;
+  
+  .welcome-header {
+    width: 100%;
+    max-width: 826px;
+  }
+  
+  .values-item {
+    width: 100%;
+    max-width: 342px;
+  }
+}
+
 #when_use {
-  background-color: #636363;
-  color: white;
+  background-color: white;
+  color: $gray;
   img {
     width: 100%;
     max-width: 300px;
@@ -250,9 +271,8 @@ $blue-light: #466299;
 }
 
 #pricing {
-
-  background-color: #FF409F;
-  color: white;
+  background-color: #F2F3F3;
+  color: $gray;
 
   #location2 {
     margin-top: 57px;
@@ -262,19 +282,11 @@ $blue-light: #466299;
     text-align: left;
   }
 }
+
 #using_type {
   background-color: #636363;
   color: white;
   img {
     height: 300px;
-  }
-}
-#use_report {
-  background-color: #E9E9E9;
-  color: #435E93;
-
-  .well {
-    background-color: $brand-success;
-    color: white;
   }
 }

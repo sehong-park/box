@@ -26,26 +26,12 @@ class @Facebook
             $(document)
                 .on('page:fetch', Facebook.saveRoot)
                 .on('page:change', Facebook.restoreRoot)
-                .on('page:change', Facebook.signIn)
-                .on('page:change', Facebook.signOut)
                 .on('page:load', ->
                     FB?.XFBML.parse()
                 )
 
         Facebook.eventsBound = true
   
-    @singIn = ->
-        $('#sign_in').click (e) ->
-            e.preventDefault()
-            FB.login (response) ->
-                window.location = '/auth/facebook/callback' if response.authResponse
-                  
-    @signOut = ->
-        $('#sign_out').click (e) ->
-            FB.getLoginStatus (response) ->
-                FB.logout() if response.authResponse
-            true
-            
     @saveRoot = ->
         Facebook.rootElement = $('#fb-root').detach()
 
