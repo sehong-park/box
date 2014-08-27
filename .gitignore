@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# uploading images
+/config/secrets.yml
+/config/database.yml
