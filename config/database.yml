@@ -26,9 +26,8 @@ test:
   database: db/iambox_development
     
 production:
-  adapter: postgresql
-  encoding: unicode
+  adapter: sqlite3
   pool: 5
-  username: 
-  password: test
+  timeout: 5000
+  database: db/iambox_production
 
