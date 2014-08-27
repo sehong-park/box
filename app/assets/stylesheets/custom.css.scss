@@ -3,6 +3,7 @@
 
 /* mixins, variables, etc. */
 $gray-medium-light: #eaeaea;
+$blue-navy: #466299;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -24,9 +25,10 @@ section {
 }
 
 a {
-  color: $brand-success;
+  color: $blue-navy;
   &:hover {
-    color: $brand-success;
+    color: $blue-navy;
+    text-decoration: none;
   }
 }
 
@@ -217,9 +219,8 @@ aside {
   }
 }
 
-$blue-light: #466299;
 #iambox {
-  background-color: $blue-light;
+  background-color: $blue-navy;
   color: white;
 
   .iambox-charactor {
