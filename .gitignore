@@ -16,4 +16,4 @@
 /tmp
 
 # uploading images
-/config/*.yml
+/config/initializers/secrets.rb
