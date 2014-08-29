@@ -1,9 +1,20 @@
-<header class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container-fluid">
+<header class="navbar navbar-default navbar-fixed-top" role="navigation" id="header">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to image_tag("welcome/nav_logo.jpg", id: "logo"), root_path, id: "logo" %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <nav>
-        <ul class="nav nav-pills pull-right">
+        <ul class="nav navbar-nav nav-pills pull-right">
           <% unless current_page?(root_path) %>
           <li><%= link_to bs_icon(:home, :홈), root_path %></li>
           <% end %>
@@ -12,18 +23,18 @@
           <li><%= link_to "? 질문", "/qna" %></li>
           <li><%= link_to bs_icon(:earphone, "02-6091-8008"), "tel:02-6091-8008" %></li>
           <% if signed_in? %>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.email%><b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <li><%= link_to "내 정보", user_path(current_user) %></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "로그아웃", signout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
+          <li id="fat-menu" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= current_user.email%><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><%= link_to "내 정보", user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "로그아웃", signout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
           <% else %>
           <li><%= link_to bs_icon("user", "로그인"), signin_path %></li>
           <% end %>
