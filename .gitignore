@@ -17,3 +17,4 @@
 
 # uploading images
 /config/initializers/secrets.rb
+/public/system
