@@ -6,11 +6,11 @@
       </div>
       <div class="modal-body center">
 
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <div id="carousel-<%= order.id %>" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
           <ol class="carousel-indicators">
             <% order.units.each_with_index do |unit, i| %>
-            <li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= 'active' unless i %>"></li>
+            <li data-target="#carousel-<%= order.id %>" data-slide-to="<%= i %>" class="<%= 'active' unless i %>"></li>
             <% end %>
           </ol>
 
@@ -18,7 +18,7 @@
           <div class="carousel-inner">
             <% order.units.each_with_index do |unit, i| %>
             <div class="item <%= (i == 0) ? 'active' :'' %>">
-              <img src="<%= unit.img.url %>" alt="..." class="centered">
+              <img src="<%= unit.img.url %>" alt="..." class="centered unit-image">
               <div class="carousel-caption">
                 <h3><%= unit.name %></h3>
                 <p><%= unit.content %></p>
@@ -28,20 +28,13 @@
           </div>
 
           <!-- Controls -->
-          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <a class="left carousel-control" href="#carousel-<%= order.id %>" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left"></span>
           </a>
-          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <a class="right carousel-control" href="#carousel-<%= order.id %>" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right"></span>
           </a>
         </div>
-
-
-
-
-
-
-
 
 
       </div>
