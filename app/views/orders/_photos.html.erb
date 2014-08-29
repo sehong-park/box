@@ -5,11 +5,45 @@
         <h4 class="modal-title" id="myModalLabel">보관물품</h4>
       </div>
       <div class="modal-body center">
-        <div class="row">
-          <% order.units.each do |unit| %>
-          <%= image_tag(unit.img.url(:medium), alt: unit.name, class: "unit-image") %>
-          <% end %>
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <% order.units.each_with_index do |unit, i| %>
+            <li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= 'active' unless i %>"></li>
+            <% end %>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <% order.units.each_with_index do |unit, i| %>
+            <div class="item <%= (i == 0) ? 'active' :'' %>">
+              <img src="<%= unit.img.url %>" alt="..." class="centered">
+              <div class="carousel-caption">
+                <h3><%= unit.name %></h3>
+                <p><%= unit.content %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
         </div>
+
+
+
+
+
+
+
+
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
