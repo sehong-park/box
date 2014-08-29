@@ -16,7 +16,10 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><strong><%= link_to(image_tag(order.units[0].img.url(:medium), alt: order.why_ordering), order_path(order), class: "order-img") %></strong></td>
+          <td>
+            <%= link_to(image_tag(order.units[0] ? order.units[0].img.url(:medium) : 'logo.jpg', alt: order.why_ordering), order_path(order), class: "order-img") %>
+          </td>
+
           <td>
             <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
             <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
