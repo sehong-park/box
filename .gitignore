@@ -16,5 +16,7 @@
 /tmp
 
 # uploading images
-/config/initializers/secrets.rb
 /public/system
+
+# secrets..
+/config/initializers/secrets.rb
