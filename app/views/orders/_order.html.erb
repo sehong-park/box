@@ -16,22 +16,25 @@
       <tbody>
         <% @orders.each do |order| %>
         <tr>
-          <td><strong><%= link_to(image_tag('logo.jpg', alt: order.why_ordering), order_path(order), class: "order-img") %></strong></td>
+          <td><strong><%= link_to(image_tag(order.units[0].img.url(:medium), alt: order.why_ordering), order_path(order), class: "order-img") %></strong></td>
           <td>
             <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
             <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
           </td>
-          
+
           <td>
             <p><%= bs_label "주소" %> <%= order.delivery_address %></p>
             <p><%= bs_label "시간" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
           </td>
-          
+
           <td>
-            <p><button type="button" class="btn btn-default btn-xs"><%= bs_icon("picture", pluralize(order.units.count, 'photo') ) %></button></p>
+            <p>
+              <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#order<%= order.id %>"><%= bs_icon("picture", pluralize(order.units.count, 'photo')) %></button>
+            </p>
             <p><button type="button" class="btn btn-default btn-xs"><%= bs_icon("share-alt", "회송요청") %></button></p>
           </td>
         </tr>
+        <%= render 'orders/photos', order: order %>
         <% end %>
       </tbody>
     </table>

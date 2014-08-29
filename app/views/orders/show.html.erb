@@ -75,7 +75,7 @@
 
     <div class="panel panel-default">
       <!-- Default panel contents -->
-      <% if @order.units.any? %>
+      <% if @order.units.any? && current_user.admin? %>
       <div class="panel-heading">보관 물품 <span class="badge badge-lg"><%= @order.units.count %></span></div>
       <div class="panel-body">
 

@@ -1,0 +1,19 @@
+<div class="modal fade" id="order<%= order.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">보관물품</h4>
+      </div>
+      <div class="modal-body center">
+        <div class="row">
+          <% order.units.each do |unit| %>
+          <%= image_tag(unit.img.url(:medium), alt: unit.name, class: "unit-image") %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

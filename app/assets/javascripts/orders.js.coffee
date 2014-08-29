@@ -8,3 +8,5 @@ $(document).on "page:change", ->
   $("#order_extra_checked").change ->
     checked = $("#order_extra_checked").is(':checked')
     toggleOrderingButton(checked)
+    
+  
