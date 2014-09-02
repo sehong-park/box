@@ -1,7 +1,7 @@
 module OrdersHelper
   
   def unit_count(order, type)
-    order.units_info.split(',')[Unit::TYPES.index(type.to_sym)].last if order.units_info != nil
+    order.units_info.split(',')[Unit::TYPES.index(type.to_sym)].last if order.units_info
   end
   
   def pricing_order(order)
@@ -37,12 +37,13 @@ module OrdersHelper
       order[:delivery_location])
 
     #charge(total_price)
-    order[:charge] = 9900 * order[:unit_count].to_i * order[:store_weeks] * (1 - order[:unit_discount] + order[:weeks_discount]) + order[:transport_price]
+    order[:storing_normal] = Unit::PRICE[:default] * order[:unit_count] * order[:store_weeks]
+    total_dc = order[:unit_discount] + order[:weeks_discount]
+    order[:charge] = order[:storing_normal] * (1 - total_dc) + order[:transport_price]
     order[:charge] = order[:charge].round(-2)
 
     #charge description
-    order[:storing_normal] = Unit::PRICE[:default] * order[:unit_count] * order[:store_weeks]
-    order[:storing_discounted] = (order[:storing_normal] * (1 - order[:unit_discount] + order[:weeks_discount])).round(-2)
+    order[:storing_discounted] = order[:charge] - order[:transport_price] 
 
     order
   end
@@ -142,7 +143,8 @@ module OrdersHelper
   end
 
   def weeks_discount(weeks)
-    (Math.log2(weeks) / 100.0).round(3)
+    #(Math.log2(weeks) / 100.0).round(3)
+    discount = weeks < 4 ? 0.0 : ( (weeks < 20) ? 0.2 : 0.3 )
   end
 
   def transport_price(pickup_location, delivery_location)
