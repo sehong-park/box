@@ -35,8 +35,8 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      flash[:warning] = "Please sign in."
-      redirect_to root_path
+      flash[:warning] = "로그인이 필요합니다"
+      redirect_to new_session_path
     end
   end
 
