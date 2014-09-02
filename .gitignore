@@ -20,3 +20,4 @@
 
 # secrets..
 /config/initializers/secrets.rb
+/config/*.yml
