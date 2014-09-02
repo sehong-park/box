@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140825165039) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -24,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140825165039) do
     t.datetime "updated_at"
   end
 
-  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id"
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -46,10 +43,10 @@ ActiveRecord::Schema.define(version: 20140825165039) do
     t.boolean  "extra_checked"
   end
 
-  add_index "orders", ["delivery_datetime"], name: "index_orders_on_delivery_datetime", using: :btree
-  add_index "orders", ["pickup_datetime"], name: "index_orders_on_pickup_datetime", using: :btree
-  add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
-  add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at", using: :btree
+  add_index "orders", ["delivery_datetime"], name: "index_orders_on_delivery_datetime"
+  add_index "orders", ["pickup_datetime"], name: "index_orders_on_pickup_datetime"
+  add_index "orders", ["status"], name: "index_orders_on_status"
+  add_index "orders", ["user_id", "created_at"], name: "index_orders_on_user_id_and_created_at"
 
   create_table "rich_rich_files", force: true do |t|
     t.datetime "created_at"
@@ -77,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140825165039) do
     t.datetime "img_updated_at"
   end
 
-  add_index "units", ["order_id"], name: "index_units_on_order_id", using: :btree
+  add_index "units", ["order_id"], name: "index_units_on_order_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -95,7 +92,7 @@ ActiveRecord::Schema.define(version: 20140825165039) do
     t.datetime "oauth_expires_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end
