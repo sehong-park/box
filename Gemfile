@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'thin'
+gem 'connect'
+
 #facebook login https://coderwall.com/p/bsfitw
 gem 'omniauth'
 gem 'omniauth-facebook'
