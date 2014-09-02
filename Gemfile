@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 gem 'thin'
 gem 'connect'
 
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+end
+
 #facebook login https://coderwall.com/p/bsfitw
 gem 'omniauth'
 gem 'omniauth-facebook'
