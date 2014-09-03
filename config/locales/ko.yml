@@ -1,2 +1,41 @@
 ko:
-  new_order: "보관신청"
+  controller:
+    users:
+      create:
+        succeed: "회원가입이 완료되었습니다."
+        failed: "회원가입이 보류되었습니다."
+
+  helper:
+    sessions:
+      signed_in_user:
+        please_login: "로그인이 필요합니다."
+    
+  activerecord:
+    models: 
+      user: "회원"
+    attributes:
+      user:
+        name: "이름"
+        email: "이메일"
+        phone: "연락처"
+        password: "비밀번호"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "- 빈칸을 채워주세요."
+              too_short: "- 두글자 이상 입력해주세요."
+              too_long: "- 너무 길어요."
+            email:
+              blank: "- 빈칸을 채워주세요"
+              taken: "- 이미 존재합니다."
+              invalid: "- 사용할수 없습니다."
+            phone:
+              blank: "- 빈칸을 채워주세요."
+              too_short: "- 너무 짧아요."
+              too_long: "- 너무 길어요."
+            password:
+              blank: "- 빈칸을 채워주세요."
+              too_short: "- 여섯글자 이상 입력해주세요."
+              

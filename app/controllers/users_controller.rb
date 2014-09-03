@@ -16,10 +16,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the I AM BOX!"
+      flash[:success] = t 'controller.users.create.succeed'
       redirect_to @user
     else
-      flash[:warning] = "Signup failed."
       render 'new'
     end
   end
