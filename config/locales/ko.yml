@@ -27,7 +27,16 @@ ko:
         phone: "연락처"
         password: "비밀번호"
       order:
-        
+        unit_count: "물품수량"
+        store_weeks: "보관기간"
+        pickup_datetime: "픽업시간"
+        delivery_datetime: "회송시간"
+        pickup_address: "픽업주소"
+        delivery_address: "회송주소"
+        pickup_location: "픽업지역"
+        delivery_location: "회송지역"
+        why_ordering: ""
+              
     errors:
       models:
         user:
@@ -48,3 +57,13 @@ ko:
               blank: "- 빈칸을 채워주세요."
               too_short: "- 여섯글자 이상 입력해주세요."
               
+        order:
+          attributes:
+            unit_count:
+              greater_than: "수량을 입력해주세요."
+            pickup_address:
+              blank: "빈칸을 채워주세요"
+              too_long: "100자 이내로 입력해주세요"
+            delivery_address:
+              blank: "빈칸을 채워주세요"
+              too_long: "100자 이내로 입력해주세요"

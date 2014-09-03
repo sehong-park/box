@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     
     if @order.save
-      flash[:success] = t 'controller.orders.create.succeed'
+      flash[:success] = t 'controller.orders.create.please_check'
       redirect_to @order
     else
       flash[:warning] = t 'controller.orders.create.failed'
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
     
     if @order.update_attributes(order_params)
       flash[:success] = t 'controller.orders.update.succeed'
-      redirect_to current_user
+      redirect_to @order
     else
       render 'edit'
     end
