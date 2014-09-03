@@ -13,7 +13,7 @@
   </div>
   <div class="col-sm-3">
     <label>픽업 시간</label>
-    <%= select_hour(@order.pickup_datetime || Time.now.localtime("+09:00") , {prefix: "order[pickup_datetime]", start_hour: 10, end_hour: 20, prompt: "시"}, {class: "form-control input-lg"}) %>
+    <%= select_tag("order[pickup_datetime][hour]", options_for_select(Order::AVAILABLE_MEETING_TIMES, @order.pickup_datetime ? @order.pickup_datetime.hour : 10), class: "form-control input-lg") %>
   </div>
 </div>
 
@@ -32,6 +32,6 @@
   </div>
   <div class="col-sm-3">
     <label>회송 시간</label>
-    <%= select_hour(@order.delivery_datetime || Time.now.localtime("+09:00"), {prefix: "order[delivery_datetime]", start_hour: 10, end_hour: 20, prompt: "시"}, {class: "form-control input-lg"}) %>
+    <%= select_tag("order[delivery_datetime][hour]", options_for_select(Order::AVAILABLE_MEETING_TIMES, @order.delivery_datetime ? @order.delivery_datetime.hour : 10), class: "form-control input-lg") %>
   </div>
 </div>
