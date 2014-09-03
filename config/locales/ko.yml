@@ -13,12 +13,15 @@ ko:
   activerecord:
     models: 
       user: "회원"
+      order: "주문"
     attributes:
       user:
         name: "이름"
         email: "이메일"
         phone: "연락처"
         password: "비밀번호"
+      order:
+        
     errors:
       models:
         user:
