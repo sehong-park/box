@@ -60,7 +60,7 @@ ko:
         order:
           attributes:
             unit_count:
-              greater_than: "수량을 입력해주세요."
+              greater_than: "정보를 입력해주세요."
             pickup_address:
               blank: "빈칸을 채워주세요"
               too_long: "100자 이내로 입력해주세요"
