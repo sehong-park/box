@@ -22,12 +22,12 @@
 
           <td>
             <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
-            <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></p>
+            <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %H시-") %><%= order.pickup_datetime.hour+3 %>시</p>
           </td>
 
           <td>
             <p><%= bs_label "주소" %> <%= order.delivery_address %></p>
-            <p><%= bs_label "시간" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></p>
+            <p><%= bs_label "시간" %> <%= order.delivery_datetime.strftime("%Y-%m-%d %H시-") %><%= order.delivery_datetime.hour+3 %>시</p>
           </td>
 
           <td>
