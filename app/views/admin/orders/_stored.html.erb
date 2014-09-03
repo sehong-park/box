@@ -20,7 +20,7 @@
         <tr>
           <td><%= link_to(stored_order.user.name, user_path(stored_order.user)) %></td>
           <td><%= stored_order.user.phone %></td>
-          <td><%= stored_order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></td>
+          <td><%= stored_order.delivery_datetime.strftime("%Y-%m-%d %H시(+3)") %></td>
           <td><%= stored_order.delivery_address %></td>
           <td><%= render 'units/thumb', order: stored_order %></td>
           <td>

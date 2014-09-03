@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to(permitted_order.user.name, user_path(permitted_order.user)) %></td>
           <td><%= permitted_order.user.phone %></td>
-          <td><%= permitted_order.pickup_datetime.strftime("%Y-%m-%d %Hh") %></td>
+          <td><%= permitted_order.pickup_datetime.strftime("%Y-%m-%d %H시(+3)") %></td>
           <td><%= permitted_order.pickup_address %></td>
           <td><%= link_to '픽업출발', admin_order_path(permitted_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
           <td><%= link_to '보기', order_path(permitted_order), class: 'btn btn-sm btn-default' %></td>

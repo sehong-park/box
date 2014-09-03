@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to(delivering_order.user.name, user_path(delivering_order.user)) %></td>
           <td><%= delivering_order.user.phone %></td>
-          <td><%= delivering_order.delivery_datetime.strftime("%Y-%m-%d %Hh") %></td>
+          <td><%= delivering_order.delivery_datetime.strftime("%Y-%m-%d %H시(+3)") %></td>
           <td><%= delivering_order.delivery_address %></td>
           <td><%= link_to '회송완료', admin_order_path(delivering_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
           <td><%= link_to '보기', order_path(delivering_order), class: 'btn btn-sm btn-default' %></td>
