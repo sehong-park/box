@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :owner_or_admin, only: [:show, :edit, :update, :delete, :checked]
   
   include OrdersHelper
-  
+
   def index
     
   end
@@ -26,10 +26,10 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
     
     if @order.save
-      flash[:success] = "New order created!"
+      flash[:success] = t 'controller.orders.create.succeed'
       redirect_to @order
     else
-      flash[:warning] = "Ordering failed.."
+      flash[:warning] = t 'controller.orders.create.failed'
       render 'new'
     end
   end
@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     updating_deny if (@order.status != 0 && !current_user.admin?)
     
     if @order.update_attributes(order_params)
-      flash[:success] = "Order updated"
+      flash[:success] = t 'controller.orders.update.succeed'
       redirect_to current_user
     else
       render 'edit'

@@ -4,6 +4,12 @@ ko:
       create:
         succeed: "회원가입이 완료되었습니다."
         failed: "회원가입이 보류되었습니다."
+    orders:
+      create:
+        please_check: "주문신청 내역을 확인하시고 주문을 완료해주세요."
+        failed: "주문신청이 보류되었습니다."
+      update:
+        succeed: "주문신청 내역을 확인하시고 주문을 완료해주세요."
 
   helper:
     sessions:
