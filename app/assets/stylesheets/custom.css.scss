@@ -92,6 +92,12 @@ textarea {
   }
 }
 
+#go-top {
+  position: fixed;
+  bottom: 0;
+  right: 10px;
+}
+
 /* footer */
 @mixin center-block() {
   display: block;
