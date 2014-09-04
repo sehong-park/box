@@ -12,3 +12,7 @@ $(document).on "page:change", ->
         dataType: 'script'
         data: $(this).serialize()
         
+  $("#welcome-notice").modal({
+    keyboard: true, 'show'
+  })
+        
