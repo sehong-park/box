@@ -23,6 +23,11 @@
           <td>
             <p><%= bs_label "주소" %> <%= order.pickup_address %></p>
             <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %H시-") %><%= order.pickup_datetime.hour+3 %>시</p>
+            <p class="text-success">
+              <strong>
+                <%= t "helper.orders.show_status.#{Order::STATUS.key(order.status).to_s}" %>
+              </strong>
+            </p>
           </td>
 
           <td>
@@ -32,9 +37,17 @@
 
           <td>
             <p>
-              <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#order<%= order.id %>"><%= bs_icon("picture", pluralize(order.units.count, 'photo')) %></button>
+              <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#order<%= order.id %>"><%= bs_icon("picture", "물품보기") %></button>
             </p>
-            <p><button type="button" class="btn btn-default btn-xs"><%= bs_icon("share-alt", "회송요청") %></button></p>
+            <p>
+              <button type="button" class="btn btn-default btn-xs"><%= bs_icon("share-alt", "회송요청") %></button>
+            </p>
+            
+            <% if order.status == 0 %>
+            <p>
+              <%= link_to bs_icon("remove", "신청취소"), order_path(order), method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: '정말 신청을 취소하시겠습니까?' } %>
+            </p>
+            <% end %>
           </td>
         </tr>
         <%= render 'orders/photos', order: order %>

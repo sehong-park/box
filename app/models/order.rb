@@ -8,7 +8,8 @@ class Order < ActiveRecord::Base
             picking_up: 2, # 픽업중
             stored: 3, # 보관중
             delivering: 4, # 회송중
-            delivered: 5} # 회송완료
+            delivered: 5, # 회송완료
+            deleted: -1,} # 삭제됨
   
   WHY_ORDERING = ["물품보관","이사", "여행", "출국", "기타"] 
   

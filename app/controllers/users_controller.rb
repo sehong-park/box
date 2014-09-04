@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @orders = @user.orders.order(created_at: :desc)
+    @orders = @user.orders.order(created_at: :desc).where.not(status: Order::STATUS[:deleted])
   end
   
   def index

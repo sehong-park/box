@@ -19,6 +19,9 @@ class Admin::AdminController < ApplicationController
     
     @delivered_orders = Order.order(delivery_datetime: :asc).where(
       status: Order::STATUS[:delivered])
+    
+    @deleted_orders = Order.order(delivery_datetime: :asc).where(
+      status: Order::STATUS[:deleted])
   end
   
   

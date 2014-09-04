@@ -1,5 +1,5 @@
 module OrdersHelper
-  
+    
   def unit_count(order, type)
     order.units_info.split(',')[Unit::TYPES.index(type.to_sym)].last if order.units_info
   end

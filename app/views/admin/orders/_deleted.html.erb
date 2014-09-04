@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    취소된 주문 <span class="badge"><%= deleted_orders.count %></span>
+  </div>
+  <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><span class="glyphicon glyphicon-user"></span>사용자</th>
+          <th><span class="glyphicon glyphicon-phone"></span>연락처</th>
+          <th><span class="glyphicon glyphicon-calendar"></span>생성시간</th>
+          <th><span class="glyphicon glyphicon-calendar"></span>삭제시간</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% deleted_orders.each do |deleted_order| %>
+        <tr>
+          <td><%= link_to(deleted_order.user.name, user_path(deleted_order.user)) %></td>
+          <td><%= deleted_order.user.phone %></td>
+          <td><%= deleted_order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+          <td><%= deleted_order.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

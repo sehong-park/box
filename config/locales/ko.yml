@@ -10,11 +10,24 @@ ko:
         failed: "주문신청이 보류되었습니다."
       update:
         succeed: "주문신청 내역을 확인하시고 주문을 완료해주세요."
+      destroy:
+        succeed: "주문신청이 취소되었습니다."
+        failed: "주문신청 취소가 보류되었습니다."
 
   helper:
     sessions:
       signed_in_user:
         please_login: "로그인이 필요합니다."
+    orders:
+      show_status:
+        ordered: "현재 보관요청이 검토중에 있습니다."
+        permitted: "입금을 완료해주세요"
+        picking_up: "현재 물품 픽업팀이 출발하였습니다."
+        stored: "맡기신 물품의 보관이 완료되었습니다."
+        delivering: "현재 물품 배송팀이 출발하였습니다."
+        delivered: "맡기신 물품의 배송이 완료되었습니다."
+        deleted: "삭제 됨"
+    
     
   activerecord:
     models: 

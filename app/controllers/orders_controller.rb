@@ -60,13 +60,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     
     if @order.status == 0
-      @order.destroy
-      flash[:success] = "Order deleted."
+      @order.update_attributes(status: -1)
+      flash[:success] = t 'controller.orders.destroy.succeed'
+      redirect_back_or current_user.admin? ? admin_path : current_user
     else
-      flash[:warning] = "Deleting denied."
+      flash[:warning] = t 'controller.orders.destroy.failed'
     end
-    
-    redirect_back_or root_path
   end
   
   private ########################################
