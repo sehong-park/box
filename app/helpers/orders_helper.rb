@@ -148,7 +148,7 @@ module OrdersHelper
   end
 
   def transport_price(pickup_location, delivery_location)
-    pickup_location.to_i + delivery_location.to_i + 14900
+    pickup_location.to_i + delivery_location.to_i + 29900
   end
   #######################################
 end

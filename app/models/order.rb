@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
   
   WHY_ORDERING = ["물품보관","이사", "여행", "출국", "기타"] 
   
-  LOCATION = [["서울", 0], ["경기", 7500] , ["인천공항", 45000]]
+  LOCATION = [["서울", 0], ["경기", 15000] , ["인천공항", 35000]]
   AVAILABLE_MEETING_TIMES = [["10시-13시",10], ["13시-16시", 13], ["16시-19시", 16]]
   
   validates :user_id, presence: true
