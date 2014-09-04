@@ -2,7 +2,7 @@
   <div class="thumbnail">
     <%= image_tag(Unit::UNIT_IMAGE[:regular], alt: "캐리어", class: "unit") %>
     <div class="caption">
-      <h3>보관품 개수</h3>
+      <h3>종이박스 <small>또는</small> 여행용가방</h3>
       <%= select_tag("order[unit_count]", options_for_select(Unit::UNIT_RANGE), selected: 1, class: "form-control input-lg") %>
     </div>
   </div>
