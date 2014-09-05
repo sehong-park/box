@@ -10,6 +10,7 @@
           <th><span class="glyphicon glyphicon-phone"></span>연락처</th>
           <th><span class="glyphicon glyphicon-calendar"></span>픽업일</th>
           <th><span class="glyphicon glyphicon-home"></span>픽업장소</th>
+          <th><%= bs_icon(:time, "주문시간") %></th>
           <th colspan="4"></th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
           <td><%= new_order.user.phone %></td>
           <td><%= new_order.pickup_datetime.strftime("%Y-%m-%d %H시(+3)") %></td>
           <td><%= new_order.pickup_address %></td>
+          <td><%= new_order.updated_at.strftime("%Y-%m-%d %H:%M") %></td>
           <td><%= link_to '입금확인 및 문자전송', admin_order_path(new_order), method: :patch, class: 'btn btn-sm btn-success' %></td>
           <td><%= link_to '보기', order_path(new_order), class: 'btn btn-sm btn-default' %></td>
           <td><%= link_to '수정', edit_order_path(new_order), class: 'btn btn-sm btn-warning' %></td>
