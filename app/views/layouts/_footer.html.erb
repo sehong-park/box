@@ -31,6 +31,17 @@
 
       <div class="col-sm-2">
         <nav class="nav">
+          <p><strong>연락</strong><p>
+          <ul>
+            <li><h4><%= link_to "02-6091-8008", 'tel:02-6091-8008' %></h4></li>
+            <li><small>통화가능시간 10시-19시</small></li>
+            <li><%= link_to "help@iambox.co.kr", 'mailto:help@iambox.co.kr' %></li>
+          </ul>
+        </nav>
+      </div>  
+
+      <div class="col-sm-2">
+        <nav class="nav">
           <p><strong>정책</strong></p>
           <ul>
             <li><%= link_to "이용약관", "/policy", target: "_blank" %></li>
@@ -38,19 +49,6 @@
           </ul>
         </nav>
       </div>
-
-      <div class="col-sm-2">
-        <nav class="nav">
-          <p><strong>연락</strong><p>
-          <ul>
-            <li><%= link_to "help@iambox.co.kr", 'mailto:help@iambox.co.kr' %></li>
-            <li><%= link_to "02-6091-8008", 'tel:02-6091-8008' %></li>
-          </ul>
-        </nav>
-      </div>    
-
-
-
     </div>
   </div>
 </footer>
