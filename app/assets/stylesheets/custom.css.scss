@@ -18,7 +18,7 @@ html {
 
 body {
   font-family: "Nanum Gothic", sans-serif;
-//  margin-top: 101px;
+  //  margin-top: 101px;
 }
 
 section {
@@ -65,10 +65,20 @@ textarea {
   -moz-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
   -webkit-box-shadow: inset 0 1px #fff, 0 1px 3px rgba(34,25,25,0.4);
 
+  .icons-nav {
+    padding-right: 24px;
+    a {
+      padding: 5px 5px;
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
   .navbar {
     margin-bottom: 0;
   }
-
   .nav {
     a {
       color: $gray;
@@ -261,17 +271,17 @@ aside {
 }
 
 #use_report {
-  
+
 }
 
 #values {
   background-color: #7EB4F1;
-  
+
   .welcome-header {
     width: 100%;
     max-width: 826px;
   }
-  
+
   .values-item {
     width: 100%;
     max-width: 300px;
