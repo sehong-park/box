@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :signed_in_user, except: [:pricing]
-  before_action :owner_or_admin, only: [:show, :edit, :update, :delete, :checked]
+  before_action :owner_or_admin, only: [:show, :edit, :update, :destroy, :checked]
   
   include OrdersHelper
 
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
       flash[:success] = t 'controller.orders.create.please_check'
       redirect_to @order
     else
-      flash[:warning] = t 'controller.orders.create.failed'
+      flash.now[:warning] = t 'controller.orders.create.failed'
       render 'new'
     end
   end

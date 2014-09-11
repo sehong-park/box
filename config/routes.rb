@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :orders
   resources :units
-  resources :articles
+  resources :articles, only: [:create, :edit, :update, :destroy]
   
   namespace :admin do
     resources :users, :orders, :units
@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   #match 
+  
+  # QnA
+  match '/question', to: 'articles#new', via: 'get'
   
   # ORDERING
   match '/ordering', to: 'orders#new', via: 'get'

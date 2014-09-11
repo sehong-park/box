@@ -1,0 +1,26 @@
+<div class="panel panel-primary" id="qna">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><strong>질문 - 답변</strong></div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>질문</th>
+        <th>작성자</th>
+        <th>등록일</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @questions.any? %>
+        <% @questions.each do |question| %>
+          <%= render 'articles/question', q: question %>
+        <% end %>
+      <% else %>
+        <tr><td colspan="3"><p>등록된 질문이 없습니다</p></td></tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "질문하기", '/question.0', class: "btn btn-lg btn-primary pull-right" %>
+</div>
