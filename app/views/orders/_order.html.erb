@@ -25,7 +25,7 @@
             <p><%= bs_label "시간" %> <%= order.pickup_datetime.strftime("%Y-%m-%d %H시-") %><%= order.pickup_datetime.hour+3 %>시</p>
             <p class="text-success">
               <strong>
-                <%= t "helper.orders.show_status.#{Order::STATUS.key(order.status).to_s}" %>
+                <%= t("helper.orders.show_status.#{Order::STATUS.key(order.status).to_s}") if order.status < 6 %>
               </strong>
             </p>
           </td>
