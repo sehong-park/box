@@ -14,7 +14,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new(types: params[:format])
+    @article = Article.new(types: params[:type], order_id: params[:order_id])
   end
 
   def create
@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
     if @article.save
       flash[:success] = "Created!"
-      redirect_to '/qna'
+      redirect_back_or '/qna'
     else
       flash.now[:success] = "Failed.."
       render 'new'
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
     
     if @article.update_attributes(article_params)
       flash[:success] = '수정 완료 되었습니다.'
-      redirect_to '/qna'
+      redirect_back_or '/qna'
     else
       render 'edit'
     end
@@ -49,12 +49,13 @@ class ArticlesController < ApplicationController
   def destroy
     Article.find(params[:id]).destroy
     flash[:success] = "Question deleted.."
-    redirect_to '/qna'
+    redirect_back_or '/qna'
   end
   
   private
     def article_params
-      article_params = params.require(:article).permit(:types, :title, :content, :answered)
+      article_params = params.require(:article).permit(
+        :types, :title, :content, :answered, :order_id)
     end
     
     def owner_or_admin

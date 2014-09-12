@@ -6,6 +6,7 @@
       <%= f.label :types, "타입" %>
       <%= f.select(:types, options_for_select(Article::TYPES, selected: @article.types), {}, class: "form-control input-lg", disabled: true) %>
       <%= f.hidden_field(:types) %>
+      <%= f.hidden_field(:order_id) %>
     </div>
 
     <div class="form-group">

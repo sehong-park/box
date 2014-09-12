@@ -2,7 +2,7 @@
   <td class="col-sm-9" data-toggle="collapse" data-parent="#qna" data-target="#qna-<%= q.id %>">
     <a><strong><%= q.title %> <%= bs_label(q.answered ? "답변완료" : "New") %></strong></a>
   </td>
-  <td class="col-sm-1"><%= q.user.name %></td>
+  <td class="col-sm-1"><%= link_to(q.user.name, current_user.admin? ? q.user : '#') %></td>
   <td class="col-sm-2"><%= q.updated_at.strftime("%Y-%m-%d") %></td>
 </tr>
 <tr id="qna-<%= q.id %>" class="collapse">

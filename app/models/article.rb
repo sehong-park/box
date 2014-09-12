@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :user
+  belongs_to :order
   
   TYPES = { "질문/답변" => 0, # 질문/답변
             "이용후기" => 1} # 후기

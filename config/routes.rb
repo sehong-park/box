@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   #match 
   
   # QnA
-  match '/question', to: 'articles#new', via: 'get'
+  match '/question/:type', to: 'articles#new', via: 'get'
+  match '/question/:type/:order_id', to: 'articles#new', via: 'get'
   match '/article/:id/answer', to: 'articles#answer', via: 'get'
   
   # ORDERING

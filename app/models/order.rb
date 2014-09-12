@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   
   belongs_to :user
   has_many :units, dependent: :destroy
+  has_many :articles
   
   STATUS = {ordered: 0, # 주문완료
             permitted: 1, # 승인(입금)완료

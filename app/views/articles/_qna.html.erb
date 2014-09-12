@@ -1,4 +1,5 @@
-<div class="panel panel-primary" id="qna">
+<% if questions.any? %>
+<div class="panel panel-<%= defined?(order) ? 'default' : 'primary' %>" id="qna">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong>질문 - 답변</strong></div>
 
@@ -12,14 +13,15 @@
     </thead>
 
     <tbody>
-      <% if @questions.any? %>
-        <% @questions.each do |question| %>
-          <%= render 'articles/question', q: question %>
-        <% end %>
-      <% else %>
-        <tr><td colspan="3"><p>등록된 질문이 없습니다</p></td></tr>
+      <% questions.each do |question| %>
+      <%= render 'articles/question', q: question %>
       <% end %>
     </tbody>
   </table>
 </div>
-<%= link_to "질문하기", '/question.0', class: "btn btn-lg btn-primary pull-right" %>
+<% end %>
+<% if defined? order %>
+<%= link_to "질문하기", "/question/0/#{order.id}", class: "btn btn-sm btn-primary pull-left col-md-1" %>
+<% else %>
+<%= link_to "질문하기", '/question/0', class: "btn btn-lg btn-primary pull-right" %>
+<% end %>

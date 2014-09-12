@@ -40,7 +40,7 @@
               <button class="btn btn-xs btn-default" data-toggle="modal" data-target="#order<%= order.id %>"><%= bs_icon("picture", "물품보기") %></button>
             </p>
             <p>
-              <button type="button" class="btn btn-default btn-xs"><%= bs_icon("share-alt", "회송요청") %></button>
+              <a href="#" class="btn btn-default btn-xs"><%= bs_icon(:'share-alt', :'회송요청') %></a>
             </p>
             
             <% if order.status == 0 %>
@@ -50,6 +50,13 @@
             <% end %>
           </td>
         </tr>
+        
+        <tr>
+          <td colspan="4">
+            <%= render 'articles/qna', {questions: questions(order), order: order} %>
+          </td>
+        </tr>
+        
         <%= render 'orders/photos', order: order %>
         <% end %>
       </tbody>
