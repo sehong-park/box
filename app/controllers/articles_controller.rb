@@ -1,9 +1,16 @@
 class ArticlesController < ApplicationController
   before_action :signed_in_user, except: [:index, :show, :qna]
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
+  before_action :admin_user, only: [:answer]
   
   def qna
     @questions = Article.where(types: 0) # 0: 질문답변
+  end
+  
+  def answer
+    @article = Article.find(params[:id])
+    @article.answered = true
+    render 'edit'
   end
 
   def new
@@ -47,7 +54,7 @@ class ArticlesController < ApplicationController
   
   private
     def article_params
-      article_params = params.require(:article).permit(:types, :title, :content)
+      article_params = params.require(:article).permit(:types, :title, :content, :answered)
     end
     
     def owner_or_admin

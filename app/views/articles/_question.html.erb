@@ -1,16 +1,16 @@
 <tr>
   <td class="col-sm-9" data-toggle="collapse" data-parent="#qna" data-target="#qna-<%= q.id %>">
-    <a><strong><%= q.title %></strong></a>
+    <a><strong><%= q.title %> <%= bs_label(q.answered ? "답변완료" : "New") %></strong></a>
   </td>
   <td class="col-sm-1"><%= q.user.name %></td>
   <td class="col-sm-2"><%= q.updated_at.strftime("%Y-%m-%d") %></td>
 </tr>
 <tr id="qna-<%= q.id %>" class="collapse">
   <td colspan="3">
-    <p><%= q.content %></p>
+    <p><%= simple_format(q.content) %></p>
     <p>
       <% if current_user && current_user.admin? %>
-        <%= link_to bs_label('답변하기', 'success'), '#qna' %>
+      <%= link_to bs_label('답변하기', 'success'), "/article/#{q.id}/answer" %>
       <% end %>
       <% if current_user && (current_user == q.user || current_user.admin?) %>
         <%= link_to bs_label('수정', 'info'), edit_article_path(q) %>
