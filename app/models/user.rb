@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token
   
+  #default scope
+  default_scope -> { order('created_at DESC') }
+  
   #name
   validates :name, presence: true, length: { minimum:2, maximum: 10 }
   
