@@ -17,6 +17,9 @@ class Order < ActiveRecord::Base
   LOCATION = [["서울", 0], ["경기", 15000] , ["인천공항", 35000]]
   AVAILABLE_MEETING_TIMES = [["10시-13시",10], ["13시-16시", 13], ["16시-19시", 16]]
   
+  #default scope
+  default_scope -> { order('created_at DESC') }
+  
   validates :user_id, presence: true
   validates :unit_count, presence: true, numericality: { greater_than: 0 }
   validates :units_info, presence: true

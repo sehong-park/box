@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:create, :edit, :update, :destroy]
   
   namespace :admin do
-    resources :users, :orders, :units
+    resources :users, :orders, :units, :articles
   end
   
   root 'welcome#index'

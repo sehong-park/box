@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :admin_user, only: [:answer]
   
   def qna
-    @questions = Article.where(types: 0) # 0: 질문답변
+    @questions = Article.where({types: 0, order_id: nil}) # 0: 질문답변
   end
   
   def answer
