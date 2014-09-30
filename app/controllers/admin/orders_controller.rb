@@ -2,7 +2,7 @@ class Admin::OrdersController < ApplicationController
   before_action :admin_user
   
   def index
-    @new_orders = Order.where(permitted: false)
+    @orders = Order.all
   end
   
   def update # 주문의 STATUS를 다음단계로 진행한다

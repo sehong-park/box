@@ -1,0 +1,10 @@
+<% provide(:title, '관리자모드') %>
+<div class="row" id="admin">
+
+  <%= render 'admin/shared/aside' %>
+
+  <div class="col-sm-10">
+    <%= render 'admin/orders/all', all_orders: @orders %>
+  </div>
+
+</div>
